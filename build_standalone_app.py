@@ -1672,6 +1672,15 @@ def main():
           else if (e.key === "ArrowRight") goToNext();
           else if (e.key.toLowerCase() === "s") toggleStar();
         }});
+
+        // Warn before reload or navigating away if student has answered questions
+        window.addEventListener("beforeunload", (e) => {{
+          if (Object.keys(state.userAnswers).length > 0) {{
+            e.preventDefault();
+            e.returnValue = "";
+            return "";
+          }}
+        }});
       }}
 
       // Initialize
