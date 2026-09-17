@@ -1239,13 +1239,27 @@ def main():
           html += `<button type="button" class="${{btnClass}}" data-nav-index="${{idx}}">${{idx + 1}}</button>`;
         }});
 
+        // Smart scroll: keeps user at question card without jumping to top of website
+        function scrollQuestionIntoView() {{
+          const card = el.touchArea || document.getElementById("touchArea");
+          if (!card) return;
+          const header = document.querySelector("header");
+          const headerHeight = header ? header.offsetHeight : 56;
+          const rect = card.getBoundingClientRect();
+          
+          // Only scroll if top of question card is hidden above the header
+          if (rect.top < headerHeight) {{
+            const targetY = window.scrollY + rect.top - headerHeight - 12;
+            window.scrollTo({{ top: Math.max(0, targetY), behavior: "smooth" }});
+          }}
+        }}
+
         el.paletteGrid.innerHTML = html;
         el.paletteGrid.querySelectorAll(".pal-btn").forEach(btn => {{
           btn.addEventListener("click", () => {{
             state.currentIndex = parseInt(btn.getAttribute("data-nav-index"), 10);
             renderQuestion();
-            // Scroll to top of card on mobile jump
-            window.scrollTo({{ top: 0, behavior: "smooth" }});
+            scrollQuestionIntoView();
           }});
         }});
 
@@ -1288,12 +1302,12 @@ def main():
         renderQuestion();
       }}
 
-      // Next / Prev Actions
+      // Next / Prev Actions with smart scroll (NO jump to top)
       function goToPrev() {{
         if (state.currentIndex > 0) {{
           state.currentIndex--;
           renderQuestion();
-          window.scrollTo({{ top: 0, behavior: "smooth" }});
+          scrollQuestionIntoView();
         }}
       }}
 
@@ -1301,7 +1315,7 @@ def main():
         if (state.currentIndex < state.activeQuestions.length - 1) {{
           state.currentIndex++;
           renderQuestion();
-          window.scrollTo({{ top: 0, behavior: "smooth" }});
+          scrollQuestionIntoView();
         }}
       }}
 
