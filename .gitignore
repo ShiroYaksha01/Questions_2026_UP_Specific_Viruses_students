@@ -1,0 +1,10 @@
+# Scratch & Extraction files
+bbox.html
+pdf_xml.xml
+extracted_text.txt
+pdf_highlights.json
+all_exact_highlights.json
+exact_highlights.json
+questions_raw.json
+__pycache__/
+.vercel
