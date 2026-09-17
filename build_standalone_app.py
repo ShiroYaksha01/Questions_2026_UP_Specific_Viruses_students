@@ -270,9 +270,68 @@ def main():
       padding: 1rem;
       margin-bottom: 1.25rem;
       box-shadow: var(--shadow-sm);
+    }}
+
+    .controls-toggle-btn {{
+      display: none;
+      width: 100%;
+      background: none;
+      border: none;
+      color: var(--text-main);
+      padding: 0;
+      font-size: 0.88rem;
+      font-weight: 700;
+      cursor: pointer;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 38px;
+      touch-action: manipulation;
+    }}
+
+    .controls-toggle-left {{
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-size: 0.88rem;
+    }}
+
+    .controls-toggle-right {{
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }}
+
+    .controls-body {{
       display: flex;
       flex-direction: column;
       gap: 0.85rem;
+    }}
+
+    @media (max-width: 640px) {{
+      .controls-panel {{
+        padding: 0.65rem 0.85rem;
+        margin-bottom: 0.85rem;
+      }}
+      .controls-toggle-btn {{
+        display: flex;
+      }}
+      .controls-body {{
+        display: none;
+        padding-top: 0.75rem;
+        border-top: 1px solid var(--border);
+        margin-top: 0.45rem;
+      }}
+      .controls-body.is-open {{
+        display: flex;
+      }}
+      .filter-item {{
+        width: 100%;
+        flex: 1 1 100%;
+      }}
+      .select-box {{
+        width: 100%;
+        font-size: 16px; /* Prevents iOS Safari auto-zoom */
+      }}
     }}
 
     .controls-row {{
@@ -288,16 +347,6 @@ def main():
       align-items: center;
       gap: 0.5rem;
       flex: 1 1 240px;
-    }}
-
-    @media (max-width: 600px) {{
-      .filter-item {{
-        width: 100%;
-        flex: 1 1 100%;
-      }}
-      .select-box {{
-        width: 100%;
-      }}
     }}
 
     .filter-label {{
@@ -734,9 +783,9 @@ def main():
 
     .palette-grid {{
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: repeat(6, 1fr);
       gap: 0.35rem;
-      max-height: 360px;
+      max-height: 320px;
       overflow-y: auto;
       padding-right: 0.2rem;
     }}
@@ -748,11 +797,11 @@ def main():
     }}
 
     .pal-btn {{
-      aspect-ratio: 1;
+      height: 38px;
       background: var(--bg-subtle);
       border: 1px solid var(--border);
       border-radius: var(--radius-sm);
-      font-size: 0.78rem;
+      font-size: 0.8rem;
       font-weight: 700;
       color: var(--text-muted);
       cursor: pointer;
@@ -760,7 +809,6 @@ def main():
       align-items: center;
       justify-content: center;
       touch-action: manipulation;
-      min-height: 38px;
     }}
 
     .pal-btn.current {{
@@ -818,58 +866,72 @@ def main():
 
     <!-- Controls Panel -->
     <div class="controls-panel">
-      <div class="controls-row">
-        
-        <!-- Filter Lecture -->
-        <div class="filter-item">
-          <span class="filter-label">Lecture:</span>
-          <select id="lectureFilter" class="select-box">
-            <!-- Populated via JS -->
-          </select>
+      <!-- Mobile Bar Toggle -->
+      <button type="button" class="controls-toggle-btn" id="btnToggleControls">
+        <span class="controls-toggle-left">
+          <span>⚙️</span>
+          <span id="controlsSummaryText">All 11 Lectures • 241 Qs</span>
+        </span>
+        <span class="controls-toggle-right">
+          <span class="pill pill-blue" id="progressPillMobile" style="font-size:0.75rem; padding:0.2rem 0.55rem;">0/241</span>
+          <span id="controlsArrow">▼</span>
+        </span>
+      </button>
+
+      <div class="controls-body" id="controlsBody">
+        <div class="controls-row">
+          
+          <!-- Filter Lecture -->
+          <div class="filter-item">
+            <span class="filter-label">Lecture:</span>
+            <select id="lectureFilter" class="select-box">
+              <!-- Populated via JS -->
+            </select>
+          </div>
+
+          <!-- Filter Question Count -->
+          <div class="filter-item">
+            <span class="filter-label">Count:</span>
+            <select id="countFilter" class="select-box">
+              <option value="all" selected>All Questions</option>
+              <option value="10">10 Questions (Quick Test)</option>
+              <option value="20">20 Questions</option>
+              <option value="50">50 Questions</option>
+              <option value="100">100 Questions</option>
+            </select>
+          </div>
+
+          <!-- Stats Counter -->
+          <div class="stats-pills">
+            <span class="pill pill-blue" id="progressPill">0 / 241 Answered</span>
+            <span class="pill pill-green" id="accuracyPill">0% Accuracy</span>
+          </div>
+
         </div>
 
-        <!-- Filter Question Count -->
-        <div class="filter-item">
-          <span class="filter-label">Count:</span>
-          <select id="countFilter" class="select-box">
-            <option value="all" selected>All Questions</option>
-            <option value="10">10 Questions (Quick Test)</option>
-            <option value="20">20 Questions</option>
-            <option value="50">50 Questions</option>
-            <option value="100">100 Questions</option>
-          </select>
+        <div class="controls-row" style="padding-top:0.6rem; border-top:1px solid var(--border);">
+          
+          <!-- Randomize Toggles -->
+          <div class="randomize-toggles">
+            <label class="toggle-chip">
+              <input type="checkbox" id="checkShuffleQuestions" checked>
+              <span>🔀 Questions</span>
+            </label>
+            <label class="toggle-chip">
+              <input type="checkbox" id="checkShuffleAnswers" checked>
+              <span>🔀 Choices (A–D)</span>
+            </label>
+            <label class="toggle-chip">
+              <input type="checkbox" id="checkStarOnly">
+              <span>⭐ Starred</span>
+            </label>
+          </div>
+
+          <button type="button" class="btn-nav btn-nav-outline" id="btnResetProgress" style="padding:0.35rem 0.75rem; font-size:0.78rem; min-height:36px; flex:none;">
+            🔄 Reset
+          </button>
+
         </div>
-
-        <!-- Stats Counter -->
-        <div class="stats-pills">
-          <span class="pill pill-blue" id="progressPill">0 / 241 Answered</span>
-          <span class="pill pill-green" id="accuracyPill">0% Accuracy</span>
-        </div>
-
-      </div>
-
-      <div class="controls-row" style="padding-top:0.6rem; border-top:1px solid var(--border);">
-        
-        <!-- Randomize Toggles -->
-        <div class="randomize-toggles">
-          <label class="toggle-chip">
-            <input type="checkbox" id="checkShuffleQuestions" checked>
-            <span>🔀 Questions</span>
-          </label>
-          <label class="toggle-chip">
-            <input type="checkbox" id="checkShuffleAnswers" checked>
-            <span>🔀 Choices (A–D)</span>
-          </label>
-          <label class="toggle-chip">
-            <input type="checkbox" id="checkStarOnly">
-            <span>⭐ Starred</span>
-          </label>
-        </div>
-
-        <button type="button" class="btn-nav btn-nav-outline" id="btnResetProgress" style="padding:0.35rem 0.75rem; font-size:0.78rem; min-height:36px; flex:none;">
-          🔄 Reset
-        </button>
-
       </div>
     </div>
 
@@ -980,6 +1042,12 @@ def main():
         checkShuffleA: document.getElementById("checkShuffleAnswers"),
         checkStarOnly: document.getElementById("checkStarOnly"),
         btnResetProgress: document.getElementById("btnResetProgress"),
+
+        btnToggleControls: document.getElementById("btnToggleControls"),
+        controlsBody: document.getElementById("controlsBody"),
+        controlsArrow: document.getElementById("controlsArrow"),
+        controlsSummaryText: document.getElementById("controlsSummaryText"),
+        progressPillMobile: document.getElementById("progressPillMobile"),
 
         progressPill: document.getElementById("progressPill"),
         accuracyPill: document.getElementById("accuracyPill"),
@@ -1124,6 +1192,7 @@ def main():
         renderQuestion();
         renderPalette();
         updateStats();
+        updateControlsSummary();
       }}
 
       // Render Current Question
@@ -1263,9 +1332,30 @@ def main():
 
         const total = state.activeQuestions.length;
         el.progressPill.textContent = `${{answeredCount}} / ${{total}} Answered`;
+        if (el.progressPillMobile) el.progressPillMobile.textContent = `${{answeredCount}}/${{total}}`;
 
         const accuracy = answeredCount > 0 ? Math.round((correctCount / answeredCount) * 100) : 0;
         el.accuracyPill.textContent = `${{correctCount}} Correct (${{accuracy}}%)`;
+      }}
+
+      // Mobile Controls Summary & Drawer Toggle
+      function updateControlsSummary() {{
+        if (!el.controlsSummaryText) return;
+        const total = state.activeQuestions.length;
+        if (state.filterLecture === "all") {{
+          el.controlsSummaryText.textContent = `All 11 Lectures • ${{total}} Qs`;
+        }} else {{
+          const opt = el.lectureFilter.options[el.lectureFilter.selectedIndex];
+          const name = opt ? opt.textContent.split(" (")[0] : `Lecture ${{state.filterLecture}}`;
+          el.controlsSummaryText.textContent = `${{name}} • ${{total}} Qs`;
+        }}
+      }}
+
+      let controlsOpenMobile = false;
+      function toggleControls() {{
+        controlsOpenMobile = !controlsOpenMobile;
+        el.controlsBody.classList.toggle("is-open", controlsOpenMobile);
+        el.controlsArrow.textContent = controlsOpenMobile ? "▲" : "▼";
       }}
 
       // Star Toggle
@@ -1357,6 +1447,7 @@ def main():
 
         el.btnStarQ.addEventListener("click", toggleStar);
         if (el.btnTogglePalette) el.btnTogglePalette.addEventListener("click", togglePaletteDrawer);
+        if (el.btnToggleControls) el.btnToggleControls.addEventListener("click", toggleControls);
 
         window.addEventListener("keydown", (e) => {{
           if (["1", "a", "A"].includes(e.key)) handleOptionSelect(0);
