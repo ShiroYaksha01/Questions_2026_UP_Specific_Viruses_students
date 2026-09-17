@@ -586,68 +586,65 @@
       flex-shrink: 0;
     }
 
-    /* Desktop Navigation Bar */
+    /* Navigation Bar (Single in-card button set, thumb-friendly on mobile) */
     .q-nav-bar {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 0.75rem;
-      padding-top: 1rem;
+      padding-top: 1.25rem;
+      margin-top: 0.5rem;
       border-top: 1px solid var(--border);
     }
 
     .btn-nav {
       background: var(--primary);
       color: white;
-      border: none;
-      padding: 0.65rem 1.25rem;
+      border: 1px solid transparent;
+      padding: 0.75rem 1.25rem;
       border-radius: var(--radius-md);
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       font-weight: 700;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 0.4rem;
-      min-height: 46px;
+      gap: 0.45rem;
+      min-height: 50px;
       touch-action: manipulation;
-      flex: 1;
+      user-select: none;
+      transition: background-color 0.15s ease, transform 0.1s ease, box-shadow 0.15s ease;
+    }
+
+    .btn-nav:active:not(:disabled) {
+      transform: scale(0.98);
+    }
+
+    .btn-nav#btnNext {
+      flex: 1.35;
+      box-shadow: 0 2px 8px rgba(37, 99, 235, 0.25);
+    }
+
+    .btn-nav#btnNext:hover:not(:disabled) {
+      background: var(--primary-hover);
     }
 
     .btn-nav-outline {
       background: var(--bg-subtle);
       color: var(--text-main);
       border: 1px solid var(--border);
+      flex: 1;
+    }
+
+    .btn-nav-outline:hover:not(:disabled) {
+      background: var(--border);
     }
 
     .btn-nav:disabled {
       opacity: 0.35;
       cursor: not-allowed;
-    }
-
-    /* Mobile Floating Bottom Bar */
-    .mobile-bottom-bar {
-      display: none;
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: var(--bg-card);
-      border-top: 1px solid var(--border);
-      padding: 0.6rem 1rem calc(0.6rem + env(safe-area-inset-bottom)) 1rem;
-      z-index: 99;
-      box-shadow: 0 -4px 12px rgba(0,0,0,0.08);
-      gap: 0.75rem;
-    }
-
-    @media (max-width: 880px) {
-      .mobile-bottom-bar {
-        display: flex;
-      }
-      /* Add extra padding to body so content isn't covered by bottom bar */
-      main {
-        padding-bottom: calc(5rem + env(safe-area-inset-bottom));
-      }
+      pointer-events: none;
+      box-shadow: none;
     }
 
     /* Palette Sidebar / Mobile Drawer */
@@ -763,13 +760,6 @@
       border-color: var(--danger);
     }
 
-    .swipe-hint {
-      font-size: 0.72rem;
-      color: var(--text-dim);
-      text-align: center;
-      margin-top: 0.75rem;
-      display: block;
-    }
 
     @keyframes slideDown {
       from { opacity: 0; transform: translateY(-6px); }
@@ -896,13 +886,11 @@
           </div>
         </div>
 
-        <!-- Desktop Navigation Bar -->
+        <!-- In-Card Navigation Bar (Single set for mobile & desktop) -->
         <div class="q-nav-bar">
           <button type="button" class="btn-nav btn-nav-outline" id="btnPrev">← Previous</button>
           <button type="button" class="btn-nav" id="btnNext">Next Question →</button>
         </div>
-
-        <span class="swipe-hint">💡 Tip: Swipe left / right to navigate on mobile</span>
 
       </section>
 
@@ -927,12 +915,6 @@
     </div>
 
   </main>
-
-  <!-- Mobile Floating Thumb Navigation Bar -->
-  <div class="mobile-bottom-bar">
-    <button type="button" class="btn-nav btn-nav-outline" id="btnMobilePrev">← Prev</button>
-    <button type="button" class="btn-nav" id="btnMobileNext">Next →</button>
-  </div>
 
   <!-- Embedded Raw Database -->
   <script>
@@ -994,8 +976,6 @@
 
         btnPrev: document.getElementById("btnPrev"),
         btnNext: document.getElementById("btnNext"),
-        btnMobilePrev: document.getElementById("btnMobilePrev"),
-        btnMobileNext: document.getElementById("btnMobileNext"),
 
         btnTogglePalette: document.getElementById("btnTogglePalette"),
         paletteBody: document.getElementById("paletteBody"),
@@ -1143,8 +1123,6 @@
         const isLast = (state.currentIndex === state.activeQuestions.length - 1);
         el.btnPrev.disabled = isFirst;
         el.btnNext.disabled = isLast;
-        if (el.btnMobilePrev) el.btnMobilePrev.disabled = isFirst;
-        if (el.btnMobileNext) el.btnMobileNext.disabled = isLast;
 
         const selectedOptIdx = state.userAnswers[q.uniqueId];
         const isAnswered = (selectedOptIdx !== undefined);
@@ -1201,6 +1179,23 @@
         updateStats();
       }
 
+      // Smart scroll helper: keeps question card comfortably in view without scrolling to top of webpage
+      function scrollQuestionIntoView() {
+        const card = el.touchArea || document.getElementById("touchArea");
+        if (!card) return;
+        const header = document.querySelector("header");
+        const headerHeight = header ? header.offsetHeight : 54;
+        const rect = card.getBoundingClientRect();
+        
+        // If top of question card is hidden above header (user scrolled down to read explanations)
+        // or pushed down below the fold (> 120px under header):
+        if (rect.top < headerHeight || rect.top > headerHeight + 120) {
+          const cardAbsoluteTop = window.scrollY + rect.top;
+          const targetY = Math.max(0, cardAbsoluteTop - headerHeight - 12);
+          window.scrollTo({ top: targetY, behavior: "smooth" });
+        }
+      }
+
       // Palette Rendering
       function renderPalette() {
         let html = "";
@@ -1216,21 +1211,6 @@
 
           html += `<button type="button" class="${btnClass}" data-nav-index="${idx}">${idx + 1}</button>`;
         });
-
-        // Smart scroll: keeps user at question card without jumping to top of website
-        function scrollQuestionIntoView() {
-          const card = el.touchArea || document.getElementById("touchArea");
-          if (!card) return;
-          const header = document.querySelector("header");
-          const headerHeight = header ? header.offsetHeight : 56;
-          const rect = card.getBoundingClientRect();
-          
-          // Only scroll if top of question card is hidden above the header
-          if (rect.top < headerHeight) {
-            const targetY = window.scrollY + rect.top - headerHeight - 12;
-            window.scrollTo({ top: Math.max(0, targetY), behavior: "smooth" });
-          }
-        }
 
         el.paletteGrid.innerHTML = html;
         el.paletteGrid.querySelectorAll(".pal-btn").forEach(btn => {
@@ -1304,33 +1284,6 @@
         el.palArrow.textContent = state.paletteOpenMobile ? "▲" : "▼";
       }
 
-      // Touch Swipe Gestures
-      function setupSwipeGestures() {
-        let touchStartX = 0;
-        let touchStartY = 0;
-
-        document.addEventListener("touchstart", (e) => {
-          touchStartX = e.changedTouches[0].screenX;
-          touchStartY = e.changedTouches[0].screenY;
-        }, { passive: true });
-
-        document.addEventListener("touchend", (e) => {
-          const touchEndX = e.changedTouches[0].screenX;
-          const touchEndY = e.changedTouches[0].screenY;
-          const diffX = touchEndX - touchStartX;
-          const diffY = touchEndY - touchStartY;
-
-          // If horizontal swipe is prominent (> 50px) and greater than vertical scroll
-          if (Math.abs(diffX) > 50 && Math.abs(diffX) > Math.abs(diffY) * 1.4) {
-            if (diffX < 0) {
-              goToNext(); // Swipe Left -> Next
-            } else {
-              goToPrev(); // Swipe Right -> Prev
-            }
-          }
-        }, { passive: true });
-      }
-
       // Event Listeners Setup
       function setupListeners() {
         el.themeBtn.addEventListener("click", toggleTheme);
@@ -1379,13 +1332,9 @@
 
         el.btnPrev.addEventListener("click", goToPrev);
         el.btnNext.addEventListener("click", goToNext);
-        if (el.btnMobilePrev) el.btnMobilePrev.addEventListener("click", goToPrev);
-        if (el.btnMobileNext) el.btnMobileNext.addEventListener("click", goToNext);
 
         el.btnStarQ.addEventListener("click", toggleStar);
         if (el.btnTogglePalette) el.btnTogglePalette.addEventListener("click", togglePaletteDrawer);
-
-        setupSwipeGestures();
 
         window.addEventListener("keydown", (e) => {
           if (["1", "a", "A"].includes(e.key)) handleOptionSelect(0);
