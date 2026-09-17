@@ -836,6 +836,121 @@ def main():
       to {{ opacity: 1; transform: translateY(0); }}
     }}
 
+    /* Modal Dialog */
+    .modal-dialog {{
+      border: none;
+      border-radius: var(--radius-lg);
+      padding: 0;
+      background: transparent;
+      max-width: 380px;
+      width: calc(100% - 2rem);
+      margin: auto;
+      box-shadow: var(--shadow-lg);
+    }}
+
+    .modal-dialog::backdrop {{
+      background: rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      animation: fadeIn 0.2s ease-out;
+    }}
+
+    .modal-card {{
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem 1.25rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+      animation: scaleUp 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }}
+
+    .modal-icon-badge {{
+      width: 54px;
+      height: 54px;
+      border-radius: var(--radius-full);
+      background: var(--primary-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.75rem;
+      margin-bottom: 0.2rem;
+    }}
+
+    .modal-title {{
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--text-main);
+      line-height: 1.3;
+    }}
+
+    .modal-desc {{
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }}
+
+    .modal-desc strong {{
+      color: var(--text-main);
+    }}
+
+    .modal-actions {{
+      display: flex;
+      gap: 0.65rem;
+      width: 100%;
+      margin-top: 0.65rem;
+    }}
+
+    .btn-modal {{
+      flex: 1;
+      padding: 0.75rem 0.85rem;
+      border-radius: var(--radius-md);
+      font-size: 0.9rem;
+      font-weight: 700;
+      cursor: pointer;
+      min-height: 48px;
+      touch-action: manipulation;
+      transition: all 0.15s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }}
+
+    .btn-modal:active {{
+      transform: scale(0.98);
+    }}
+
+    .btn-modal-cancel {{
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+    }}
+
+    .btn-modal-confirm {{
+      background: var(--primary);
+      border: 1px solid transparent;
+      color: white;
+      box-shadow: 0 2px 6px rgba(37, 99, 235, 0.25);
+    }}
+
+    .btn-modal-confirm.danger {{
+      background: var(--danger);
+      box-shadow: 0 2px 6px rgba(239, 68, 68, 0.25);
+    }}
+
+    @keyframes fadeIn {{
+      from {{ opacity: 0; }}
+      to {{ opacity: 1; }}
+    }}
+
+    @keyframes scaleUp {{
+      from {{ opacity: 0; transform: scale(0.92); }}
+      to {{ opacity: 1; transform: scale(1); }}
+    }}
+
     .hidden {{ display: none !important; }}
   </style>
 </head>
@@ -1000,6 +1115,21 @@ def main():
 
   </main>
 
+  <!-- Confirmation Modal Dialog -->
+  <dialog class="modal-dialog" id="confirmModal">
+    <div class="modal-card">
+      <div class="modal-icon-badge" id="modalIcon">🎲</div>
+      <h3 class="modal-title" id="modalTitle">Shuffle All Questions?</h3>
+      <p class="modal-desc" id="modalDesc">
+        This will re-randomize question order and answer choices, and reset your current progress.
+      </p>
+      <div class="modal-actions">
+        <button type="button" class="btn-modal btn-modal-cancel" id="btnModalCancel">Cancel</button>
+        <button type="button" class="btn-modal btn-modal-confirm" id="btnModalConfirm">Shuffle &amp; Restart</button>
+      </div>
+    </div>
+  </dialog>
+
   <!-- Embedded Raw Database -->
   <script>
     window.RAW_QUESTIONS = {json_str};
@@ -1051,6 +1181,13 @@ def main():
 
         progressPill: document.getElementById("progressPill"),
         accuracyPill: document.getElementById("accuracyPill"),
+
+        confirmModal: document.getElementById("confirmModal"),
+        modalIcon: document.getElementById("modalIcon"),
+        modalTitle: document.getElementById("modalTitle"),
+        modalDesc: document.getElementById("modalDesc"),
+        btnModalCancel: document.getElementById("btnModalCancel"),
+        btnModalConfirm: document.getElementById("btnModalConfirm"),
 
         badgeLecture: document.getElementById("badgeLecture"),
         badgeOrigQ: document.getElementById("badgeOrigQ"),
@@ -1396,16 +1533,60 @@ def main():
         el.palArrow.textContent = state.paletteOpenMobile ? "▲" : "▼";
       }}
 
+      // Confirmation Modal Controller
+      let onModalConfirmCallback = null;
+
+      function showConfirmModal(opts) {{
+        if (!el.confirmModal) return;
+        if (el.modalIcon) el.modalIcon.textContent = opts.icon || "⚠️";
+        if (el.modalTitle) el.modalTitle.textContent = opts.title || "Are you sure?";
+        if (el.modalDesc) el.modalDesc.innerHTML = opts.desc || "";
+        if (el.btnModalConfirm) {{
+          el.btnModalConfirm.textContent = opts.confirmText || "Confirm";
+          el.btnModalConfirm.classList.toggle("danger", !!opts.isDanger);
+        }}
+        onModalConfirmCallback = opts.onConfirm;
+
+        if (typeof el.confirmModal.showModal === "function") {{
+          el.confirmModal.showModal();
+        }} else {{
+          el.confirmModal.setAttribute("open", "");
+        }}
+      }}
+
+      function closeModal() {{
+        if (!el.confirmModal) return;
+        if (typeof el.confirmModal.close === "function") {{
+          el.confirmModal.close();
+        }} else {{
+          el.confirmModal.removeAttribute("open");
+        }}
+        onModalConfirmCallback = null;
+      }}
+
       // Event Listeners Setup
       function setupListeners() {{
         el.themeBtn.addEventListener("click", toggleTheme);
 
         el.btnShuffleAll.addEventListener("click", () => {{
-          state.shuffleQuestions = true;
-          state.shuffleAnswers = true;
-          el.checkShuffleQ.checked = true;
-          el.checkShuffleA.checked = true;
-          buildSession(true);
+          const answeredCount = Object.keys(state.userAnswers).length;
+
+          showConfirmModal({{
+            icon: "🎲",
+            title: "Shuffle All Questions?",
+            desc: answeredCount > 0
+              ? `You currently have <strong>${{answeredCount}} answered question${{answeredCount > 1 ? "s" : ""}}</strong>. Shuffling will re-randomize question order & choices, and <strong>reset your progress</strong>.`
+              : "This will re-randomize both questions and choices (A–D) for a fresh practice session.",
+            confirmText: "Shuffle & Restart",
+            isDanger: false,
+            onConfirm: () => {{
+              state.shuffleQuestions = true;
+              state.shuffleAnswers = true;
+              el.checkShuffleQ.checked = true;
+              el.checkShuffleA.checked = true;
+              buildSession(true);
+            }}
+          }});
         }});
 
         el.lectureFilter.addEventListener("change", (e) => {{
@@ -1434,12 +1615,25 @@ def main():
         }});
 
         el.btnResetProgress.addEventListener("click", () => {{
-          if (confirm("Reset current practice progress?")) {{
-            state.userAnswers = {{}};
-            renderQuestion();
-            renderPalette();
-            updateStats();
+          const answeredCount = Object.keys(state.userAnswers).length;
+          if (answeredCount === 0) {{
+            alert("No progress to reset yet.");
+            return;
           }}
+
+          showConfirmModal({{
+            icon: "🔄",
+            title: "Reset Practice Progress?",
+            desc: `This will clear all <strong>${{answeredCount}} answered question${{answeredCount > 1 ? "s" : ""}}</strong> and restart your score from 0.`,
+            confirmText: "Reset Progress",
+            isDanger: true,
+            onConfirm: () => {{
+              state.userAnswers = {{}};
+              renderQuestion();
+              renderPalette();
+              updateStats();
+            }}
+          }});
         }});
 
         el.btnPrev.addEventListener("click", goToPrev);
@@ -1448,6 +1642,26 @@ def main():
         el.btnStarQ.addEventListener("click", toggleStar);
         if (el.btnTogglePalette) el.btnTogglePalette.addEventListener("click", togglePaletteDrawer);
         if (el.btnToggleControls) el.btnToggleControls.addEventListener("click", toggleControls);
+
+        if (el.btnModalCancel) el.btnModalCancel.addEventListener("click", closeModal);
+        if (el.btnModalConfirm) {{
+          el.btnModalConfirm.addEventListener("click", () => {{
+            const cb = onModalConfirmCallback;
+            closeModal();
+            if (cb) cb();
+          }});
+        }}
+        if (el.confirmModal) {{
+          el.confirmModal.addEventListener("click", (e) => {{
+            const rect = el.confirmModal.getBoundingClientRect();
+            const isInDialog = (rect.top <= e.clientY && e.clientY <= rect.top + rect.height
+              && rect.left <= e.clientX && e.clientX <= rect.left + rect.width);
+            if (!isInDialog) closeModal();
+          }});
+          el.confirmModal.addEventListener("cancel", () => {{
+            onModalConfirmCallback = null;
+          }});
+        }}
 
         window.addEventListener("keydown", (e) => {{
           if (["1", "a", "A"].includes(e.key)) handleOptionSelect(0);
