@@ -9,10 +9,6 @@
   <meta name="description" content="Metabolic Biochemistry Year 2 MCQ review. Practice 160 PDF questions with randomized choices and highlighted answers.">
   <title>Metabolic Biochemistry QCM Review 2026 — University of Puthisastra</title>
   
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  
   <style>
     :root {
       --primary: #2563eb;
@@ -99,7 +95,7 @@
     }
 
     body {
-      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       background-color: var(--bg-body);
       color: var(--text-main);
       line-height: 1.5;
@@ -900,6 +896,69 @@
 
     .hidden { display: none !important; }
   </style>
+  <style>.header-progress { height: 3px; background: var(--bg-subtle); }
+.header-progress > div { height: 100%; width: 0; background: linear-gradient(90deg, #2563eb, #8b5cf6); transition: width .2s ease; }
+.header-star[aria-pressed="true"] { color: var(--warning-text); background: var(--warning-light); border-color: var(--warning-border); }
+.header-navigator { display: none; }
+.study-notice { margin-bottom: 1rem; padding: .75rem 1rem; border: 1px solid var(--warning-border); border-radius: var(--radius-md); background: var(--warning-light); color: var(--warning-text); font-weight: 600; }
+.mobile-nav { display: none; }
+.study-sheet { border: 0; background: transparent; color: var(--text-main); width: min(100% - 2rem, 600px); max-height: min(90vh, 90dvh); margin: auto; padding: 0; box-shadow: var(--shadow-lg); }
+.study-sheet::backdrop { background: rgb(0 0 0 / .55); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
+.study-sheet .sheet-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.2rem; max-height: min(90vh, 90dvh); overflow-y: auto; overscroll-behavior: contain; scrollbar-gutter: stable; }
+.sheet-heading { display: flex; align-items: center; justify-content: space-between; gap: .75rem; margin-bottom: .75rem; }
+.sheet-heading h2 { font-size: 1.1rem; }
+.sheet-close { width: 44px; height: 44px; background: var(--bg-subtle); color: var(--text-main); border: 1px solid var(--border); border-radius: 50%; font-size: 1.5rem; cursor: pointer; }
+.sheet-subtitle { color: var(--text-muted); margin-bottom: .8rem; }
+.sheet-handle { display: none; }
+.settings-dialog .controls-panel { border: 0; box-shadow: none; padding: 0; margin: 0; }
+.settings-dialog .controls-body { display: flex !important; margin: 0; padding: 0; border: 0; }
+.settings-dialog .controls-row { gap: .9rem; }
+.settings-dialog .btn-nav { flex: 1; font-size: .86rem; }
+.navigator-filters { display: flex; flex-wrap: wrap; gap: .4rem; padding: .15rem 0 .8rem; }
+.navigator-filters button { min-height: 44px; white-space: nowrap; padding: .4rem .7rem; border-radius: 999px; border: 1px solid var(--border); background: var(--bg-subtle); color: var(--text-main); font-weight: 700; cursor: pointer; }
+.navigator-filters button[aria-pressed="true"] { background: var(--primary); border-color: var(--primary); color: white; }
+.sheet-palette { max-height: none; grid-template-columns: repeat(auto-fill, minmax(44px, 1fr)); }
+.sheet-palette .pal-btn { min-height: 44px; height: 44px; }
+.navigator-empty { color: var(--text-muted); padding: 1rem 0; }
+.pal-btn.starred::after { content: "★"; position: absolute; font-size: .7rem; transform: translate(15px, -14px); color: var(--warning-text); }
+.select-box { font-size: max(16px, .95rem); }
+.pal-btn { position: relative; }
+.pal-btn.current { outline: 2px solid var(--primary); outline-offset: 1px; }
+.opt-btn.locked { cursor: default; }
+.btn-icon:focus-visible, .btn-nav:focus-visible, .pal-btn:focus-visible, .mobile-nav button:focus-visible, .sheet-close:focus-visible, .navigator-filters button:focus-visible { outline: 3px solid var(--primary); outline-offset: 2px; }
+@media (max-width: 880px) {
+  .header-navigator { display: flex; }
+  .palette-sidebar { display: none; }
+  .study-sheet { width: 100%; max-width: none; max-height: min(85vh, 85dvh); margin: auto 0 0; }
+  .study-sheet .sheet-card { border-radius: 20px 20px 0 0; max-height: min(85vh, 85dvh); padding-bottom: max(1.2rem, env(safe-area-inset-bottom)); }
+  .sheet-handle { display: block; width: 36px; height: 4px; border-radius: 4px; background: var(--text-dim); margin: 0 auto 1rem; }
+}
+@media (max-width: 768px) {
+  body { padding-bottom: calc(80px + env(safe-area-inset-bottom)); }
+  .header-inner { padding: .45rem .75rem; }
+  .brand-icon { width: 32px; height: 32px; min-width: 32px; font-size: 1rem; }
+  .brand-title h1 { font-size: .85rem; }
+  .brand-title p { display: none; }
+  .header-actions { gap: .25rem; }
+  .header-actions .btn-icon { width: 40px; height: 40px; }
+  .header-navigator { display: none; }
+  .q-nav-bar { display: none; }
+  .mobile-nav { display: grid; grid-template-columns: 1fr 1.5fr 1fr; gap: .45rem; position: fixed; left: 0; right: 0; bottom: 0; z-index: 110; padding: .5rem .65rem max(.5rem, env(safe-area-inset-bottom)); background: var(--bg-card); border-top: 1px solid var(--border); box-shadow: 0 -4px 16px rgb(0 0 0 / .1); }
+  .mobile-nav button { min-height: 50px; padding: .4rem; border-radius: var(--radius-md); border: 1px solid var(--border); background: var(--bg-subtle); color: var(--text-main); font-size: .88rem; font-weight: 700; cursor: pointer; transition: transform .1s ease; }
+  .mobile-nav button:active:not(:disabled) { transform: scale(.98); }
+  .mobile-nav .mobile-nav-next { background: var(--primary); color: white; border-color: var(--primary); }
+  .mobile-nav button:disabled { opacity: .4; cursor: default; }
+}
+@media (max-width: 370px) {
+  .brand-title h1 { max-width: 100px; }
+  .mobile-nav { grid-template-columns: .9fr 1.3fr .9fr; }
+  .mobile-nav button { font-size: .78rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .header-progress > div, .btn-nav, .opt-btn, .mobile-nav button { transition: none; }
+  .mobile-nav button:active { transform: none; }
+}
+</style>
 </head>
 <body>
 
@@ -915,21 +974,26 @@
       </a>
 
       <div class="header-actions">
-        <button type="button" class="btn-shuffle-top" id="btnShuffleAll" title="Randomize both questions & answer choices">
-          <span>🎲</span> <span class="btn-lbl">Shuffle All</span>
-        </button>
-        <button type="button" class="btn-icon" id="btnThemeToggle" title="Toggle Dark/Light Mode">🌙</button>
+        <button type="button" class="btn-icon header-star" id="btnStarOnly" aria-label="Show starred questions" aria-pressed="false" title="Show starred questions">☆</button>
+        <button type="button" class="btn-icon header-navigator" id="btnOpenNavigator" aria-label="Open question navigator" title="Question navigator">▦</button>
+        <button type="button" class="btn-icon" id="btnOpenSettings" aria-label="Open study settings" title="Study settings">⚙</button>
+        <button type="button" class="btn-icon" id="btnThemeToggle" aria-label="Toggle dark mode" title="Toggle Dark/Light Mode">🌙</button>
       </div>
     </div>
+    <div class="header-progress" role="progressbar" aria-label="Questions answered" aria-valuemin="0" aria-valuemax="160" aria-valuenow="0" id="headerProgress"><div id="progressFill"></div></div>
   </header>
 
   <!-- Main Content Container -->
   <main>
+    <div class="study-notice hidden" id="studyNotice" role="status"></div>
 
-    <!-- Controls Panel -->
+    <!-- Study settings -->
+    <dialog class="study-sheet settings-dialog" id="settingsDialog" aria-labelledby="settingsTitle" closedby="any">
+      <div class="sheet-card">
+      <div class="sheet-heading"><h2 id="settingsTitle">Study settings</h2><button type="button" class="sheet-close" data-close-sheet aria-label="Close settings">×</button></div>
     <div class="controls-panel">
       <!-- Mobile Bar Toggle -->
-      <button type="button" class="controls-toggle-btn" id="btnToggleControls">
+      <button type="button" class="controls-toggle-btn hidden" id="btnToggleControls">
         <span class="controls-toggle-left">
           <span>⚙️</span>
           <span id="controlsSummaryText">Metabolic Biochemistry • 160 Qs</span>
@@ -992,10 +1056,13 @@
           <button type="button" class="btn-nav btn-nav-outline" id="btnResetProgress" style="padding:0.35rem 0.75rem; font-size:0.78rem; min-height:36px; flex:none;">
             🔄 Reset
           </button>
+          <button type="button" class="btn-nav btn-nav-outline" id="btnShuffleAll">🎲 Shuffle &amp; restart</button>
 
         </div>
       </div>
     </div>
+      </div>
+    </dialog>
 
     <!-- Question + Palette Grid -->
     <div class="content-grid">
@@ -1057,8 +1124,35 @@
 
   </main>
 
+  <nav class="mobile-nav" aria-label="Question navigation">
+    <button type="button" id="btnPrevMobile" class="mobile-nav-prev">← Prev</button>
+    <button type="button" id="btnNavigatorMobile" class="mobile-nav-center" aria-label="Open question navigator">Q <span id="mobilePosition">1/160</span> ▦</button>
+    <button type="button" id="btnNextMobile" class="mobile-nav-next">Next →</button>
+  </nav>
+
+  <dialog class="study-sheet navigator-dialog" id="navigatorDialog" aria-labelledby="navigatorTitle" closedby="any">
+    <div class="sheet-card">
+      <div class="sheet-handle" aria-hidden="true"></div>
+      <div class="sheet-heading"><h2 id="navigatorTitle">Question navigator</h2><button type="button" class="sheet-close" data-close-sheet aria-label="Close navigator">×</button></div>
+      <p class="sheet-subtitle" id="navigatorCount">0 / 160 answered</p>
+      <div class="navigator-filters" id="navigatorFilters" role="group" aria-label="Filter questions">
+        <button type="button" data-filter="all" aria-pressed="true">All</button>
+        <button type="button" data-filter="correct" aria-pressed="false">Correct</button>
+        <button type="button" data-filter="wrong" aria-pressed="false">Wrong</button>
+        <button type="button" data-filter="unanswered" aria-pressed="false">Unanswered</button>
+        <button type="button" data-filter="starred" aria-pressed="false">Starred</button>
+      </div>
+      <div class="palette-grid sheet-palette" id="sheetPaletteGrid"></div>
+      <p class="navigator-empty hidden" id="navigatorEmpty">No questions match this filter.</p>
+    </div>
+  </dialog>
+
+  <dialog class="modal-dialog" id="staleDialog" aria-labelledby="staleTitle" closedby="none">
+    <div class="modal-card"><div class="modal-icon-badge">↻</div><h3 class="modal-title" id="staleTitle">Progress changed in another tab</h3><p class="modal-desc">Reload to continue with the latest saved session.</p><button type="button" class="btn-modal btn-modal-confirm" id="btnReloadSession">Reload saved session</button></div>
+  </dialog>
+
   <!-- Confirmation Modal Dialog -->
-  <dialog class="modal-dialog" id="confirmModal">
+  <dialog class="modal-dialog" id="confirmModal" closedby="any">
     <div class="modal-card">
       <div class="modal-icon-badge" id="modalIcon">🎲</div>
       <h3 class="modal-title" id="modalTitle">Shuffle All Questions?</h3>
@@ -1078,553 +1172,479 @@
   </script>
 
   <!-- Application Logic -->
+  <script>window.DATASET_HASH = "648bbce1332b375396c224abac5dbb49096eaebc05c83a333ec78c8c5209d11d";</script>
   <script>
-    (function () {
-      "use strict";
+(function () {
+  "use strict";
 
-      const rawDB = window.RAW_QUESTIONS || [];
-      if (!rawDB.length) {
-        alert("Questions database is empty or failed to load.");
-        return;
+  const rawDB = window.RAW_QUESTIONS || [];
+  if (!rawDB.length) return;
+  const byId = new Map(rawDB.map(q => [q.global_id, q]));
+  const SESSION_KEY = "metabolic_biochem_session_v1";
+  const STAR_KEY = "metabolic_biochem_stars";
+  const THEME_KEY = "metabolic_theme_mode";
+  const el = Object.fromEntries([
+    "btnThemeToggle", "btnStarOnly", "btnOpenNavigator", "btnOpenSettings",
+    "settingsDialog", "navigatorDialog", "staleDialog", "btnReloadSession",
+    "studyNotice", "lectureFilter", "countFilter", "checkShuffleQuestions",
+    "checkShuffleAnswers", "checkStarOnly", "btnShuffleAll", "btnResetProgress",
+    "progressPill", "progressPillMobile", "accuracyPill", "headerProgress",
+    "progressFill", "badgeLecture", "badgeOrigQ", "badgePosition", "btnStarQ",
+    "qTitle", "optionsContainer", "explBox", "explAnswerLabel", "btnPrev",
+    "btnNext", "btnPrevMobile", "btnNextMobile", "btnNavigatorMobile",
+    "mobilePosition", "paletteGrid", "sheetPaletteGrid", "navigatorFilters",
+    "navigatorCount", "navigatorEmpty", "palAnsweredCounter", "palDrawerCounter",
+    "touchArea", "confirmModal", "modalIcon", "modalTitle", "modalDesc",
+    "btnModalCancel", "btnModalConfirm", "controlsSummaryText"
+  ].map(id => [id, document.getElementById(id)]));
+
+  const state = {
+    sessionQuestions: [], viewQuestions: [], currentId: null, answers: {},
+    starred: new Set(), lecture: "all", count: "all", shuffleQ: true,
+    shuffleA: true, starOnly: false, navFilter: "all", stale: false,
+    canSave: true, lastSwipeAt: 0
+  };
+
+  function readStorage(key) {
+    try { return localStorage.getItem(key); }
+    catch (_) { state.canSave = false; return null; }
+  }
+  function writeStorage(key, value) {
+    try { localStorage.setItem(key, value); return true; }
+    catch (_) {
+      state.canSave = false;
+      notice("Progress cannot be saved in this browser. Keep this tab open until you finish.");
+      return false;
+    }
+  }
+  function notice(message) {
+    el.studyNotice.textContent = message;
+    el.studyNotice.classList.remove("hidden");
+  }
+  function randomize(items) {
+    const result = [...items];
+    for (let i = result.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [result[i], result[j]] = [result[j], result[i]];
+    }
+    return result;
+  }
+  function optionLetters(raw) {
+    return ["A", "B", "C", "D", "E"].filter(letter =>
+      Object.prototype.hasOwnProperty.call(raw.options, letter));
+  }
+  function makeQuestion(raw, letters) {
+    return {
+      id: raw.global_id, raw,
+      options: letters.map((letter, index) => ({
+        origLetter: letter, displayLetter: "ABCDE"[index],
+        text: raw.options[letter], isCorrect: letter === raw.correct_answer
+      }))
+    };
+  }
+  function snapshot() {
+    return {
+      version: 1, dataset: window.DATASET_HASH,
+      questionIds: state.sessionQuestions.map(q => q.id),
+      optionOrder: Object.fromEntries(state.sessionQuestions.map(q =>
+        [q.id, q.options.map(option => option.origLetter)])),
+      answers: state.answers, currentId: state.currentId,
+      lecture: state.lecture, count: state.count,
+      shuffleQ: state.shuffleQ, shuffleA: state.shuffleA,
+      starOnly: state.starOnly
+    };
+  }
+  function save() {
+    if (state.stale || !state.sessionQuestions.length) return;
+    writeStorage(SESSION_KEY, JSON.stringify(snapshot()));
+  }
+  function restore() {
+    const text = readStorage(SESSION_KEY);
+    if (!text) return false;
+    try {
+      const saved = JSON.parse(text);
+      if (saved.version !== 1 || saved.dataset !== window.DATASET_HASH ||
+          !Array.isArray(saved.questionIds) || !saved.questionIds.length ||
+          new Set(saved.questionIds).size !== saved.questionIds.length ||
+          !saved.optionOrder || !saved.answers ||
+          !["all", "10", "20", "50", "100"].includes(saved.count) ||
+          !["all", ...new Set(rawDB.map(q => String(q.lecture_id)))].includes(saved.lecture) ||
+          typeof saved.shuffleQ !== "boolean" || typeof saved.shuffleA !== "boolean" ||
+          typeof saved.starOnly !== "boolean") throw new Error("invalid session");
+      const questions = saved.questionIds.map(id => {
+        const raw = byId.get(id), letters = saved.optionOrder[id];
+        if (!raw || !Array.isArray(letters) ||
+            letters.length !== optionLetters(raw).length ||
+            new Set(letters).size !== letters.length ||
+            letters.some(letter => !optionLetters(raw).includes(letter))) throw new Error("invalid question");
+        return makeQuestion(raw, letters);
+      });
+      const ids = new Set(saved.questionIds.map(String));
+      for (const [id, letter] of Object.entries(saved.answers)) {
+        if (!ids.has(id) || !saved.optionOrder[id].includes(letter)) throw new Error("invalid answer");
       }
-
-      // Application State
-      const state = {
-        activeQuestions: [],
-        currentIndex: 0,
-        userAnswers: {},
-        starredSet: new Set(JSON.parse(localStorage.getItem("metabolic_biochem_stars") || "[]")),
-        
-        // Settings
-        filterLecture: "all",
-        filterCount: "all",
-        shuffleQuestions: true,
-        shuffleAnswers: true,
-        starOnly: false,
-        paletteOpenMobile: false
-      };
-
-      // DOM Elements
-      const el = {
-        themeBtn: document.getElementById("btnThemeToggle"),
-        btnShuffleAll: document.getElementById("btnShuffleAll"),
-        lectureFilter: document.getElementById("lectureFilter"),
-        countFilter: document.getElementById("countFilter"),
-        checkShuffleQ: document.getElementById("checkShuffleQuestions"),
-        checkShuffleA: document.getElementById("checkShuffleAnswers"),
-        checkStarOnly: document.getElementById("checkStarOnly"),
-        btnResetProgress: document.getElementById("btnResetProgress"),
-
-        btnToggleControls: document.getElementById("btnToggleControls"),
-        controlsBody: document.getElementById("controlsBody"),
-        controlsArrow: document.getElementById("controlsArrow"),
-        controlsSummaryText: document.getElementById("controlsSummaryText"),
-        progressPillMobile: document.getElementById("progressPillMobile"),
-
-        progressPill: document.getElementById("progressPill"),
-        accuracyPill: document.getElementById("accuracyPill"),
-
-        confirmModal: document.getElementById("confirmModal"),
-        modalIcon: document.getElementById("modalIcon"),
-        modalTitle: document.getElementById("modalTitle"),
-        modalDesc: document.getElementById("modalDesc"),
-        btnModalCancel: document.getElementById("btnModalCancel"),
-        btnModalConfirm: document.getElementById("btnModalConfirm"),
-
-        badgeLecture: document.getElementById("badgeLecture"),
-        badgeOrigQ: document.getElementById("badgeOrigQ"),
-        badgePosition: document.getElementById("badgePosition"),
-        btnStarQ: document.getElementById("btnStarQ"),
-        qTitle: document.getElementById("qTitle"),
-        optionsContainer: document.getElementById("optionsContainer"),
-
-        explBox: document.getElementById("explBox"),
-        explAnswerLabel: document.getElementById("explAnswerLabel"),
-
-        btnPrev: document.getElementById("btnPrev"),
-        btnNext: document.getElementById("btnNext"),
-
-        btnTogglePalette: document.getElementById("btnTogglePalette"),
-        paletteBody: document.getElementById("paletteBody"),
-        palArrow: document.getElementById("palArrow"),
-        palDrawerCounter: document.getElementById("palDrawerCounter"),
-        paletteGrid: document.getElementById("paletteGrid"),
-        palAnsweredCounter: document.getElementById("palAnsweredCounter"),
-        touchArea: document.getElementById("touchArea")
-      };
-
-      // Fisher-Yates Shuffle
-      function shuffle(array) {
-        const arr = [...array];
-        for (let i = arr.length - 1; i > 0; i--) {
-          const j = Math.floor(Math.random() * (i + 1));
-          [arr[i], arr[j]] = [arr[j], arr[i]];
-        }
-        return arr;
+      if (saved.currentId !== null && !ids.has(String(saved.currentId))) throw new Error("invalid position");
+      state.sessionQuestions = questions;
+      state.answers = saved.answers;
+      state.currentId = saved.currentId;
+      state.lecture = saved.lecture;
+      state.count = saved.count;
+      state.shuffleQ = saved.shuffleQ;
+      state.shuffleA = saved.shuffleA;
+      state.starOnly = saved.starOnly;
+      return true;
+    } catch (_) {
+      try { localStorage.removeItem(SESSION_KEY); } catch (_) { state.canSave = false; }
+      notice("Saved progress could not be restored. A new study session has started.");
+      return false;
+    }
+  }
+  function newSession() {
+    let list = rawDB.filter(q => state.lecture === "all" || String(q.lecture_id) === state.lecture);
+    if (state.shuffleQ) list = randomize(list);
+    if (state.count !== "all") list = list.slice(0, Number(state.count));
+    state.sessionQuestions = list.map(raw => makeQuestion(raw,
+      state.shuffleA ? randomize(optionLetters(raw)) : optionLetters(raw)));
+    state.answers = {};
+    state.starOnly = false;
+    state.currentId = state.sessionQuestions[0]?.id ?? null;
+    setView();
+  }
+  function syncSettings() {
+    el.lectureFilter.value = state.lecture;
+    el.countFilter.value = state.count;
+    el.checkShuffleQuestions.checked = state.shuffleQ;
+    el.checkShuffleAnswers.checked = state.shuffleA;
+    el.checkStarOnly.checked = state.starOnly;
+    el.btnStarOnly.setAttribute("aria-pressed", String(state.starOnly));
+    el.btnStarOnly.textContent = state.starOnly ? "★" : "☆";
+  }
+  function setView(persist = true) {
+    state.viewQuestions = state.starOnly
+      ? state.sessionQuestions.filter(q => state.starred.has(q.id))
+      : state.sessionQuestions;
+    if (!state.viewQuestions.some(q => q.id === state.currentId))
+      state.currentId = state.viewQuestions[0]?.id ?? null;
+    syncSettings();
+    renderAll();
+    if (persist) save();
+  }
+  function currentQuestion() {
+    return state.viewQuestions.find(q => q.id === state.currentId) || null;
+  }
+  function answeredCount() {
+    return state.sessionQuestions.filter(q => state.answers[q.id] !== undefined).length;
+  }
+  function renderQuestion() {
+    const q = currentQuestion();
+    const index = state.viewQuestions.findIndex(item => item.id === state.currentId);
+    const position = `${index + 1}/${state.viewQuestions.length}`;
+    el.mobilePosition.textContent = position;
+    el.btnPrev.disabled = el.btnPrevMobile.disabled = index <= 0;
+    el.btnNext.disabled = el.btnNextMobile.disabled = index < 0 || index >= state.viewQuestions.length - 1;
+    el.btnStarQ.disabled = !q;
+    if (!q) {
+      el.badgeLecture.textContent = "Starred questions";
+      el.badgeOrigQ.textContent = "";
+      el.badgePosition.textContent = "0 questions";
+      el.qTitle.textContent = "No starred questions in this session. Star a question or turn off Starred mode.";
+      el.optionsContainer.replaceChildren();
+      el.explBox.classList.add("hidden");
+      return;
+    }
+    el.badgeLecture.textContent = q.raw.lecture_name;
+    el.badgeOrigQ.textContent = `Original Q${q.raw.question_id}`;
+    el.badgePosition.textContent = `Question ${index + 1} of ${state.viewQuestions.length}`;
+    el.qTitle.textContent = q.raw.question;
+    el.btnStarQ.classList.toggle("starred", state.starred.has(q.id));
+    el.btnStarQ.textContent = state.starred.has(q.id) ? "★" : "☆";
+    el.btnStarQ.setAttribute("aria-label", state.starred.has(q.id) ? "Remove bookmark" : "Bookmark question");
+    el.optionsContainer.replaceChildren();
+    const answer = state.answers[q.id];
+    q.options.forEach((option, optionIndex) => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "opt-btn";
+      if (answer !== undefined) {
+        button.classList.add("locked");
+        if (option.isCorrect) button.classList.add("is-correct");
+        else if (option.origLetter === answer) button.classList.add("is-wrong");
       }
-
-      // Theme Init
-      function initTheme() {
-        const saved = localStorage.getItem("metabolic_theme_mode") || "light";
-        document.documentElement.setAttribute("data-theme", saved);
-        el.themeBtn.textContent = saved === "dark" ? "☀️" : "🌙";
-      }
-
-      function toggleTheme() {
-        const cur = document.documentElement.getAttribute("data-theme") || "light";
-        const next = cur === "light" ? "dark" : "light";
-        document.documentElement.setAttribute("data-theme", next);
-        localStorage.setItem("metabolic_theme_mode", next);
-        el.themeBtn.textContent = next === "dark" ? "☀️" : "🌙";
-      }
-
-      // Populate topic dropdown
-      function populateLectureFilter() {
-        const map = new Map();
-        rawDB.forEach(q => {
-          if (!map.has(q.lecture_id)) {
-            map.set(q.lecture_id, { name: q.lecture_name, count: 0 });
-          }
-          map.get(q.lecture_id).count++;
-        });
-
-        let html = '<option value="all">All 160 Questions</option>';
-        map.forEach((val, id) => {
-          html += `<option value="${id}">${val.name} (${val.count} Qs)</option>`;
-        });
-        el.lectureFilter.innerHTML = html;
-      }
-
-      // Build & Randomize Session Questions
-      function buildSession(resetAnswers = false) {
-        if (resetAnswers) {
-          state.userAnswers = {};
-        }
-
-        let list = [...rawDB];
-        if (state.filterLecture !== "all") {
-          const lid = parseInt(state.filterLecture, 10);
-          list = list.filter(q => q.lecture_id === lid);
-        }
-
-        if (state.starOnly) {
-          list = list.filter(q => state.starredSet.has(q.global_id));
-        }
-
-        if (list.length === 0) {
-          alert("No questions match your current filter criteria.");
-          if (state.starOnly) {
-            state.starOnly = false;
-            el.checkStarOnly.checked = false;
-            buildSession(false);
-            return;
-          }
-        }
-
-        if (state.shuffleQuestions) {
-          list = shuffle(list);
-        }
-
-        if (state.filterCount !== "all") {
-          const maxCount = parseInt(state.filterCount, 10);
-          list = list.slice(0, maxCount);
-        }
-
-        state.activeQuestions = list.map((q, idx) => {
-          const rawOpts = [];
-          ["A", "B", "C", "D", "E"].forEach(letter => {
-            if (q.options[letter]) {
-              rawOpts.push({
-                origLetter: letter,
-                text: q.options[letter],
-                isCorrect: (letter === q.correct_answer)
-              });
-            }
-          });
-
-          const finalOpts = state.shuffleAnswers ? shuffle(rawOpts) : rawOpts;
-          const alphabet = ["A", "B", "C", "D", "E"];
-          const formattedOpts = finalOpts.map((opt, oIdx) => ({
-            displayLetter: alphabet[oIdx],
-            text: opt.text,
-            isCorrect: opt.isCorrect,
-            origLetter: opt.origLetter
-          }));
-
-          return {
-            uniqueId: q.global_id + "_" + idx,
-            globalId: q.global_id,
-            lectureId: q.lecture_id,
-            lectureName: q.lecture_name,
-            origQId: q.question_id,
-            questionText: q.question,
-            options: formattedOpts,
-            correctText: q.correct_text
-          };
-        });
-
-        state.currentIndex = 0;
-        renderQuestion();
-        renderPalette();
-        updateStats();
-        updateControlsSummary();
-      }
-
-      // Render Current Question
-      function renderQuestion() {
-        if (!state.activeQuestions.length) return;
-        const q = state.activeQuestions[state.currentIndex];
-        if (!q) return;
-
-        el.badgeLecture.textContent = q.lectureName;
-        el.badgeOrigQ.textContent = `Original Q${q.origQId}`;
-        el.badgePosition.textContent = `Question ${state.currentIndex + 1} of ${state.activeQuestions.length}`;
-        el.qTitle.textContent = q.questionText;
-
-        const isStarred = state.starredSet.has(q.globalId);
-        el.btnStarQ.classList.toggle("starred", isStarred);
-        el.btnStarQ.textContent = isStarred ? "★" : "☆";
-
-        const isFirst = (state.currentIndex === 0);
-        const isLast = (state.currentIndex === state.activeQuestions.length - 1);
-        el.btnPrev.disabled = isFirst;
-        el.btnNext.disabled = isLast;
-
-        const selectedOptIdx = state.userAnswers[q.uniqueId];
-        const isAnswered = (selectedOptIdx !== undefined);
-
-        let html = "";
-        q.options.forEach((opt, optIdx) => {
-          let btnClass = "opt-btn";
-          if (isAnswered) {
-            btnClass += " locked";
-            if (opt.isCorrect) {
-              btnClass += " is-correct";
-            } else if (optIdx === selectedOptIdx) {
-              btnClass += " is-wrong";
-            }
-          }
-
-          html += `
-            <button type="button" class="${btnClass}" data-opt-index="${optIdx}">
-              <span class="opt-tag">${opt.displayLetter}</span>
-              <span class="opt-text">${opt.text}</span>
-            </button>
-          `;
-        });
-
-        el.optionsContainer.innerHTML = html;
-
-        el.optionsContainer.querySelectorAll(".opt-btn").forEach(btn => {
-          btn.addEventListener("click", () => {
-            const optIdx = parseInt(btn.getAttribute("data-opt-index"), 10);
-            handleOptionSelect(optIdx);
-          });
-        });
-
-        if (isAnswered) {
-          el.explBox.classList.remove("hidden");
-          const correctOpt = q.options.find(o => o.isCorrect);
-          el.explAnswerLabel.textContent = `${correctOpt ? correctOpt.displayLetter : ""}) ${q.correctText}`;
-        } else {
-          el.explBox.classList.add("hidden");
-        }
-
-        renderPalette();
-      }
-
-      // Handle Option Selection
-      function handleOptionSelect(optIndex) {
-        const q = state.activeQuestions[state.currentIndex];
-        if (!q) return;
-
-        state.userAnswers[q.uniqueId] = optIndex;
-        renderQuestion();
-        updateStats();
-      }
-
-      // Smart scroll helper: keeps question card comfortably in view without scrolling to top of webpage
-      function scrollQuestionIntoView() {
-        const card = el.touchArea || document.getElementById("touchArea");
-        if (!card) return;
-        const header = document.querySelector("header");
-        const headerHeight = header ? header.offsetHeight : 54;
-        const rect = card.getBoundingClientRect();
-        
-        // Keep the question card in view after changing questions
-        // or pushed down below the fold (> 120px under header):
-        if (rect.top < headerHeight || rect.top > headerHeight + 120) {
-          const cardAbsoluteTop = window.scrollY + rect.top;
-          const targetY = Math.max(0, cardAbsoluteTop - headerHeight - 12);
-          window.scrollTo({ top: targetY, behavior: "smooth" });
-        }
-      }
-
-      // Palette Rendering
-      function renderPalette() {
-        let html = "";
-        state.activeQuestions.forEach((q, idx) => {
-          let btnClass = "pal-btn";
-          if (idx === state.currentIndex) btnClass += " current";
-
-          const chosenIdx = state.userAnswers[q.uniqueId];
-          if (chosenIdx !== undefined) {
-            const chosenOpt = q.options[chosenIdx];
-            btnClass += (chosenOpt && chosenOpt.isCorrect) ? " correct" : " wrong";
-          }
-
-          html += `<button type="button" class="${btnClass}" data-nav-index="${idx}">${idx + 1}</button>`;
-        });
-
-        el.paletteGrid.innerHTML = html;
-        el.paletteGrid.querySelectorAll(".pal-btn").forEach(btn => {
-          btn.addEventListener("click", () => {
-            state.currentIndex = parseInt(btn.getAttribute("data-nav-index"), 10);
-            renderQuestion();
-            scrollQuestionIntoView();
-          });
-        });
-
-        const answeredCount = Object.keys(state.userAnswers).length;
-        const total = state.activeQuestions.length;
-        el.palAnsweredCounter.textContent = `${answeredCount} / ${total}`;
-        if (el.palDrawerCounter) el.palDrawerCounter.textContent = `${answeredCount}/${total}`;
-      }
-
-      // Update Statistics
-      function updateStats() {
-        const answeredCount = Object.keys(state.userAnswers).length;
-        let correctCount = 0;
-
-        state.activeQuestions.forEach(q => {
-          const chosenIdx = state.userAnswers[q.uniqueId];
-          if (chosenIdx !== undefined && q.options[chosenIdx] && q.options[chosenIdx].isCorrect) {
-            correctCount++;
-          }
-        });
-
-        const total = state.activeQuestions.length;
-        el.progressPill.textContent = `${answeredCount} / ${total} Answered`;
-        if (el.progressPillMobile) el.progressPillMobile.textContent = `${answeredCount}/${total}`;
-
-        const accuracy = answeredCount > 0 ? Math.round((correctCount / answeredCount) * 100) : 0;
-        el.accuracyPill.textContent = `${correctCount} Correct (${accuracy}%)`;
-      }
-
-      // Mobile Controls Summary & Drawer Toggle
-      function updateControlsSummary() {
-        if (!el.controlsSummaryText) return;
-        const total = state.activeQuestions.length;
-        if (state.filterLecture === "all") {
-          el.controlsSummaryText.textContent = `Metabolic Biochemistry • ${total} Qs`;
-        } else {
-          const opt = el.lectureFilter.options[el.lectureFilter.selectedIndex];
-          const name = opt ? opt.textContent.split(" (")[0] : `Metabolic Biochemistry`;
-          el.controlsSummaryText.textContent = `${name} • ${total} Qs`;
-        }
-      }
-
-      let controlsOpenMobile = false;
-      function toggleControls() {
-        controlsOpenMobile = !controlsOpenMobile;
-        el.controlsBody.classList.toggle("is-open", controlsOpenMobile);
-        el.controlsArrow.textContent = controlsOpenMobile ? "▲" : "▼";
-      }
-
-      // Star Toggle
-      function toggleStar() {
-        const q = state.activeQuestions[state.currentIndex];
-        if (!q) return;
-
-        if (state.starredSet.has(q.globalId)) {
-          state.starredSet.delete(q.globalId);
-        } else {
-          state.starredSet.add(q.globalId);
-        }
-        localStorage.setItem("metabolic_biochem_stars", JSON.stringify(Array.from(state.starredSet)));
-        renderQuestion();
-      }
-
-      // Next / Prev Actions with smart scroll (NO jump to top)
-      function goToPrev() {
-        if (state.currentIndex > 0) {
-          state.currentIndex--;
-          renderQuestion();
+      const tag = document.createElement("span");
+      tag.className = "opt-tag";
+      tag.textContent = option.displayLetter;
+      const label = document.createElement("span");
+      label.className = "opt-text";
+      label.textContent = option.text;
+      button.append(tag, label);
+      button.addEventListener("click", () => {
+        if (Date.now() - state.lastSwipeAt > 400) selectAnswer(optionIndex);
+      });
+      el.optionsContainer.append(button);
+    });
+    el.explBox.classList.toggle("hidden", answer === undefined);
+    if (answer !== undefined) {
+      const correct = q.options.find(option => option.isCorrect);
+      el.explAnswerLabel.textContent = `${correct.displayLetter}) ${q.raw.correct_text}`;
+    }
+  }
+  function selectAnswer(index) {
+    if (state.stale) return;
+    const q = currentQuestion();
+    if (!q || state.answers[q.id] !== undefined || !q.options[index]) return;
+    state.answers[q.id] = q.options[index].origLetter;
+    renderAll();
+    save();
+  }
+  function paletteStatus(q) {
+    const answer = state.answers[q.id];
+    if (answer === undefined) return "unanswered";
+    return answer === q.raw.correct_answer ? "correct" : "wrong";
+  }
+  function renderPalette() {
+    const count = answeredCount(), total = state.sessionQuestions.length;
+    el.palAnsweredCounter.textContent = `${count} / ${total}`;
+    el.palDrawerCounter.textContent = `${count}/${total}`;
+    el.navigatorCount.textContent = `${count} / ${total} answered`;
+    const visible = state.viewQuestions.filter(q =>
+      state.navFilter === "all" ||
+      (state.navFilter === "starred" ? state.starred.has(q.id) : paletteStatus(q) === state.navFilter));
+    el.navigatorEmpty.classList.toggle("hidden", visible.length > 0);
+    for (const [grid, questions] of [[el.paletteGrid, state.viewQuestions], [el.sheetPaletteGrid, visible]]) {
+      grid.replaceChildren();
+      questions.forEach(q => {
+        const index = state.viewQuestions.indexOf(q);
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = `pal-btn ${paletteStatus(q)}`;
+        if (q.id === state.currentId) button.classList.add("current");
+        if (state.starred.has(q.id)) button.classList.add("starred");
+        button.textContent = String(index + 1);
+        button.setAttribute("aria-label", `Question ${index + 1}, ${paletteStatus(q)}${state.starred.has(q.id) ? ", starred" : ""}`);
+        button.addEventListener("click", () => {
+          if (state.stale) return;
+          state.currentId = q.id;
+          renderAll();
+          save();
+          if (el.navigatorDialog.open) closeSheet(el.navigatorDialog);
           scrollQuestionIntoView();
-        }
+        });
+        grid.append(button);
+      });
+    }
+    if (el.navigatorDialog.open)
+      el.sheetPaletteGrid.querySelector(".current")?.scrollIntoView({block: "nearest"});
+  }
+  function renderStats() {
+    const count = answeredCount(), total = state.sessionQuestions.length;
+    const correct = state.sessionQuestions.filter(q => paletteStatus(q) === "correct").length;
+    el.progressPill.textContent = `${count} / ${total} Answered`;
+    el.progressPillMobile.textContent = `${count}/${total}`;
+    el.accuracyPill.textContent = `${correct} Correct (${count ? Math.round(correct / count * 100) : 0}%)`;
+    el.headerProgress.setAttribute("aria-valuemax", String(total));
+    el.headerProgress.setAttribute("aria-valuenow", String(count));
+    el.progressFill.style.width = `${total ? count / total * 100 : 0}%`;
+    el.controlsSummaryText.textContent = `Metabolic Biochemistry • ${total} Qs`;
+  }
+  function renderAll() { renderQuestion(); renderPalette(); renderStats(); }
+  function scrollQuestionIntoView() {
+    const header = document.querySelector("header");
+    const top = el.touchArea.getBoundingClientRect().top;
+    const headerHeight = header?.offsetHeight || 54;
+    if (top < headerHeight || top > headerHeight + 120)
+      window.scrollTo({top: Math.max(0, window.scrollY + top - headerHeight - 12), behavior: "smooth"});
+  }
+  function move(delta) {
+    if (state.stale) return;
+    const index = state.viewQuestions.findIndex(q => q.id === state.currentId);
+    const next = state.viewQuestions[index + delta];
+    if (!next) return;
+    state.currentId = next.id;
+    renderAll();
+    save();
+    scrollQuestionIntoView();
+  }
+  function toggleStar() {
+    if (state.stale) return;
+    const q = currentQuestion();
+    if (!q) return;
+    if (state.starred.has(q.id)) state.starred.delete(q.id);
+    else state.starred.add(q.id);
+    writeStorage(STAR_KEY, JSON.stringify([...state.starred]));
+    setView();
+  }
+  function toggleStarOnly() {
+    if (state.stale) return;
+    state.starOnly = !state.starOnly;
+    setView();
+  }
+  function openSheet(dialog) {
+    if (state.stale || dialog.open) return;
+    if (typeof dialog.showModal === "function") dialog.showModal();
+    else dialog.setAttribute("open", "");
+    if (dialog === el.navigatorDialog) renderPalette();
+    dialog.querySelector(".sheet-close")?.focus();
+  }
+  function closeSheet(dialog) {
+    if (typeof dialog.close === "function") dialog.close();
+    else dialog.removeAttribute("open");
+  }
+  let confirmAction = null;
+  function showConfirm({title, desc, button, action, danger = false}) {
+    el.modalIcon.textContent = danger ? "⚠" : "↻";
+    el.modalTitle.textContent = title;
+    el.modalDesc.textContent = desc;
+    el.btnModalConfirm.textContent = button;
+    el.btnModalConfirm.classList.toggle("danger", danger);
+    confirmAction = action;
+    if (typeof el.confirmModal.showModal === "function") el.confirmModal.showModal();
+    else el.confirmModal.setAttribute("open", "");
+    el.btnModalCancel.focus();
+  }
+  function closeConfirm(confirmed) {
+    const action = confirmAction;
+    confirmAction = null;
+    if (typeof el.confirmModal.close === "function") el.confirmModal.close();
+    else el.confirmModal.removeAttribute("open");
+    if (confirmed && action) action();
+  }
+  function requestSetting(key, value, control) {
+    if (state.stale || value === state[key]) return;
+    control.type === "checkbox" ? control.checked = state[key] : control.value = state[key];
+    const apply = () => {
+      state[key] = value;
+      newSession();
+      closeSheet(el.settingsDialog);
+    };
+    if (answeredCount()) showConfirm({
+      title: "Start a new study session?",
+      desc: "Changing this setting will replace your saved answers and question order.",
+      button: "Start new session", action: apply, danger: true
+    });
+    else apply();
+  }
+  function populateLectures() {
+    const counts = new Map();
+    rawDB.forEach(q => counts.set(q.lecture_id, (counts.get(q.lecture_id) || 0) + 1));
+    el.lectureFilter.replaceChildren(new Option(`All ${rawDB.length} Questions`, "all"));
+    counts.forEach((count, id) => {
+      const q = rawDB.find(item => item.lecture_id === id);
+      el.lectureFilter.add(new Option(`${q.lecture_name} (${count} Qs)`, String(id)));
+    });
+  }
+  function initTheme() {
+    const theme = readStorage(THEME_KEY) === "dark" ? "dark" : "light";
+    document.documentElement.setAttribute("data-theme", theme);
+    el.btnThemeToggle.textContent = theme === "dark" ? "☀️" : "🌙";
+  }
+  function setupSwipe() {
+    let start = null;
+    el.touchArea.addEventListener("touchstart", event => {
+      if (event.touches.length !== 1 || event.target.closest("a, select, input, textarea, [contenteditable]")) return;
+      start = {x: event.touches[0].clientX, y: event.touches[0].clientY};
+    }, {passive: true});
+    el.touchArea.addEventListener("touchend", event => {
+      if (!start || event.changedTouches.length !== 1 || el.navigatorDialog.open || el.settingsDialog.open) return;
+      const dx = event.changedTouches[0].clientX - start.x;
+      const dy = event.changedTouches[0].clientY - start.y;
+      start = null;
+      if (Math.abs(dx) > 45 && Math.abs(dy) < 35) {
+        state.lastSwipeAt = Date.now();
+        move(dx < 0 ? 1 : -1);
       }
+    }, {passive: true});
+    el.touchArea.addEventListener("touchcancel", () => { start = null; }, {passive: true});
+  }
+  function setupEvents() {
+    el.btnPrev.addEventListener("click", () => move(-1));
+    el.btnNext.addEventListener("click", () => move(1));
+    el.btnPrevMobile.addEventListener("click", () => move(-1));
+    el.btnNextMobile.addEventListener("click", () => move(1));
+    el.btnNavigatorMobile.addEventListener("click", () => openSheet(el.navigatorDialog));
+    el.btnOpenNavigator.addEventListener("click", () => openSheet(el.navigatorDialog));
+    el.btnOpenSettings.addEventListener("click", () => openSheet(el.settingsDialog));
+    el.btnStarQ.addEventListener("click", toggleStar);
+    el.btnStarOnly.addEventListener("click", toggleStarOnly);
+    el.checkStarOnly.addEventListener("change", toggleStarOnly);
+    el.btnThemeToggle.addEventListener("click", () => {
+      const next = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", next);
+      el.btnThemeToggle.textContent = next === "dark" ? "☀️" : "🌙";
+      writeStorage(THEME_KEY, next);
+    });
+    for (const [id, key, convert] of [
+      ["lectureFilter", "lecture", input => input.value],
+      ["countFilter", "count", input => input.value],
+      ["checkShuffleQuestions", "shuffleQ", input => input.checked],
+      ["checkShuffleAnswers", "shuffleA", input => input.checked]
+    ]) el[id].addEventListener("change", () => requestSetting(key, convert(el[id]), el[id]));
+    el.btnShuffleAll.addEventListener("click", () => showConfirm({
+      title: "Shuffle and restart?", desc: "This will replace the saved session and clear its answers.",
+      button: "Shuffle and restart", danger: true,
+      action: () => { state.shuffleQ = state.shuffleA = true; newSession(); closeSheet(el.settingsDialog); }
+    }));
+    el.btnResetProgress.addEventListener("click", () => {
+      if (!answeredCount()) { notice("No answers to reset yet."); return; }
+      showConfirm({title: "Reset progress?", desc: "This will clear the answers in the current session.",
+        button: "Reset progress", danger: true, action: () => {
+          state.answers = {};
+          state.currentId = state.viewQuestions[0]?.id ?? null;
+          renderAll(); save(); closeSheet(el.settingsDialog);
+        }});
+    });
+    el.btnModalCancel.addEventListener("click", () => closeConfirm(false));
+    el.btnModalConfirm.addEventListener("click", () => closeConfirm(true));
+    el.confirmModal.addEventListener("cancel", () => { confirmAction = null; });
+    el.confirmModal.addEventListener("close", () => { confirmAction = null; });
+    for (const dialog of [el.settingsDialog, el.navigatorDialog]) {
+      dialog.querySelector("[data-close-sheet]").addEventListener("click", () => closeSheet(dialog));
+      dialog.addEventListener("click", event => { if (event.target === dialog) closeSheet(dialog); });
+    }
+    el.navigatorFilters.addEventListener("click", event => {
+      const button = event.target.closest("button[data-filter]");
+      if (!button) return;
+      state.navFilter = button.dataset.filter;
+      el.navigatorFilters.querySelectorAll("button").forEach(item =>
+        item.setAttribute("aria-pressed", String(item === button)));
+      renderPalette();
+    });
+    window.addEventListener("keydown", event => {
+      if (state.stale || event.altKey || event.ctrlKey || event.metaKey ||
+          document.querySelector("dialog[open]") ||
+          event.target.closest?.("input, select, textarea, [contenteditable]")) return;
+      const key = event.key.toLowerCase();
+      const optionIndex = {"1": 0, a: 0, "2": 1, b: 1, "3": 2, c: 2, "4": 3, d: 3}[key];
+      if (optionIndex !== undefined) selectAnswer(optionIndex);
+      else if (key === "arrowleft") { event.preventDefault(); move(-1); }
+      else if (key === "arrowright") { event.preventDefault(); move(1); }
+      else if (key === "s") toggleStar();
+    });
+    window.addEventListener("storage", event => {
+      if (event.key !== SESSION_KEY || state.stale) return;
+      state.stale = true;
+      if (typeof el.staleDialog.showModal === "function") el.staleDialog.showModal();
+      else el.staleDialog.setAttribute("open", "");
+    });
+    el.staleDialog.addEventListener("cancel", event => event.preventDefault());
+    el.btnReloadSession.addEventListener("click", () => location.reload());
+    window.addEventListener("beforeunload", event => {
+      if (!state.canSave && answeredCount()) { event.preventDefault(); event.returnValue = ""; }
+    });
+    setupSwipe();
+  }
 
-      function goToNext() {
-        if (state.currentIndex < state.activeQuestions.length - 1) {
-          state.currentIndex++;
-          renderQuestion();
-          scrollQuestionIntoView();
-        }
-      }
+  populateLectures();
+  initTheme();
+  try {
+    const stars = JSON.parse(readStorage(STAR_KEY) || "[]");
+    if (Array.isArray(stars)) state.starred = new Set(stars.filter(id => byId.has(id)));
+  } catch (_) { state.starred = new Set(); }
+  setupEvents();
+  if (restore()) { syncSettings(); setView(false); }
+  else newSession();
+  if (!state.canSave) notice("Progress cannot be saved in this browser. Keep this tab open until you finish.");
+})();
 
-      // Mobile Drawer Toggle
-      function togglePaletteDrawer() {
-        state.paletteOpenMobile = !state.paletteOpenMobile;
-        el.paletteBody.classList.toggle("is-open", state.paletteOpenMobile);
-        el.palArrow.textContent = state.paletteOpenMobile ? "▲" : "▼";
-      }
-
-      // Confirmation Modal Controller
-      let onModalConfirmCallback = null;
-
-      function showConfirmModal(opts) {
-        if (!el.confirmModal) return;
-        if (el.modalIcon) el.modalIcon.textContent = opts.icon || "⚠️";
-        if (el.modalTitle) el.modalTitle.textContent = opts.title || "Are you sure?";
-        if (el.modalDesc) el.modalDesc.innerHTML = opts.desc || "";
-        if (el.btnModalConfirm) {
-          el.btnModalConfirm.textContent = opts.confirmText || "Confirm";
-          el.btnModalConfirm.classList.toggle("danger", !!opts.isDanger);
-        }
-        onModalConfirmCallback = opts.onConfirm;
-
-        if (typeof el.confirmModal.showModal === "function") {
-          el.confirmModal.showModal();
-        } else {
-          el.confirmModal.setAttribute("open", "");
-        }
-      }
-
-      function closeModal() {
-        if (!el.confirmModal) return;
-        if (typeof el.confirmModal.close === "function") {
-          el.confirmModal.close();
-        } else {
-          el.confirmModal.removeAttribute("open");
-        }
-        onModalConfirmCallback = null;
-      }
-
-      // Event Listeners Setup
-      function setupListeners() {
-        el.themeBtn.addEventListener("click", toggleTheme);
-
-        el.btnShuffleAll.addEventListener("click", () => {
-          const answeredCount = Object.keys(state.userAnswers).length;
-
-          showConfirmModal({
-            icon: "🎲",
-            title: "Shuffle All Questions?",
-            desc: answeredCount > 0
-              ? `You currently have <strong>${answeredCount} answered question${answeredCount > 1 ? "s" : ""}</strong>. Shuffling will re-randomize question order & choices, and <strong>reset your progress</strong>.`
-              : "This will re-randomize both questions and choices (A–D) for a fresh practice session.",
-            confirmText: "Shuffle & Restart",
-            isDanger: false,
-            onConfirm: () => {
-              state.shuffleQuestions = true;
-              state.shuffleAnswers = true;
-              el.checkShuffleQ.checked = true;
-              el.checkShuffleA.checked = true;
-              buildSession(true);
-            }
-          });
-        });
-
-        el.lectureFilter.addEventListener("change", (e) => {
-          state.filterLecture = e.target.value;
-          buildSession(true);
-        });
-
-        el.countFilter.addEventListener("change", (e) => {
-          state.filterCount = e.target.value;
-          buildSession(true);
-        });
-
-        el.checkShuffleQ.addEventListener("change", (e) => {
-          state.shuffleQuestions = e.target.checked;
-          buildSession(true);
-        });
-
-        el.checkShuffleA.addEventListener("change", (e) => {
-          state.shuffleAnswers = e.target.checked;
-          buildSession(true);
-        });
-
-        el.checkStarOnly.addEventListener("change", (e) => {
-          state.starOnly = e.target.checked;
-          buildSession(true);
-        });
-
-        el.btnResetProgress.addEventListener("click", () => {
-          const answeredCount = Object.keys(state.userAnswers).length;
-          if (answeredCount === 0) {
-            alert("No progress to reset yet.");
-            return;
-          }
-
-          showConfirmModal({
-            icon: "🔄",
-            title: "Reset Practice Progress?",
-            desc: `This will clear all <strong>${answeredCount} answered question${answeredCount > 1 ? "s" : ""}</strong> and restart your score from 0.`,
-            confirmText: "Reset Progress",
-            isDanger: true,
-            onConfirm: () => {
-              state.userAnswers = {};
-              renderQuestion();
-              renderPalette();
-              updateStats();
-            }
-          });
-        });
-
-        el.btnPrev.addEventListener("click", goToPrev);
-        el.btnNext.addEventListener("click", goToNext);
-
-        el.btnStarQ.addEventListener("click", toggleStar);
-        if (el.btnTogglePalette) el.btnTogglePalette.addEventListener("click", togglePaletteDrawer);
-        if (el.btnToggleControls) el.btnToggleControls.addEventListener("click", toggleControls);
-
-        if (el.btnModalCancel) el.btnModalCancel.addEventListener("click", closeModal);
-        if (el.btnModalConfirm) {
-          el.btnModalConfirm.addEventListener("click", () => {
-            const cb = onModalConfirmCallback;
-            closeModal();
-            if (cb) cb();
-          });
-        }
-        if (el.confirmModal) {
-          el.confirmModal.addEventListener("click", (e) => {
-            const rect = el.confirmModal.getBoundingClientRect();
-            const isInDialog = (rect.top <= e.clientY && e.clientY <= rect.top + rect.height
-              && rect.left <= e.clientX && e.clientX <= rect.left + rect.width);
-            if (!isInDialog) closeModal();
-          });
-          el.confirmModal.addEventListener("cancel", () => {
-            onModalConfirmCallback = null;
-          });
-        }
-
-        window.addEventListener("keydown", (e) => {
-          if (["1", "a", "A"].includes(e.key)) handleOptionSelect(0);
-          else if (["2", "b", "B"].includes(e.key)) handleOptionSelect(1);
-          else if (["3", "c", "C"].includes(e.key)) handleOptionSelect(2);
-          else if (["4", "d", "D"].includes(e.key)) handleOptionSelect(3);
-          else if (e.key === "ArrowLeft") goToPrev();
-          else if (e.key === "ArrowRight") goToNext();
-          else if (e.key.toLowerCase() === "s") toggleStar();
-        });
-
-        // Warn before reload or navigating away if student has answered questions
-        window.addEventListener("beforeunload", (e) => {
-          if (Object.keys(state.userAnswers).length > 0) {
-            e.preventDefault();
-            e.returnValue = "";
-            return "";
-          }
-        });
-      }
-
-      // Initialize
-      initTheme();
-      populateLectureFilter();
-      setupListeners();
-      buildSession(true);
-    })();
   </script>
 </body>
 </html>

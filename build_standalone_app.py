@@ -3,22 +3,29 @@
 build_standalone_app.py
 Builds a completely self-contained, standalone, mobile-first index.html file containing:
 - Mobile-optimized responsive UI (iPhone, Android, tablet, desktop)
-- Single thumb-friendly navigation button set directly inside the question card
+- Fixed mobile thumb-zone navigation and tablet sidebar
 - Smart in-place scrolling (keeps question in view without jumping to top)
-- Mobile collapsible Question Navigator drawer
+- Filterable Question Navigator bottom sheet
+- Local autosave and restore of study progress
 - Full dual randomization (Questions + Options)
 - Embedded metabolic biochemistry MCQs with PDF-highlighted answers
 - Windows double-click ready (runs natively in Edge, Chrome, Firefox with zero tools)
 - Vercel ready (static site deployment out-of-the-box)
 """
 
+import hashlib
 import json
+from pathlib import Path
 
 def main():
     with open("questions_db.json", encoding="utf-8") as f:
         questions_data = json.load(f)
 
     json_str = json.dumps(questions_data, ensure_ascii=False)
+    dataset_hash = hashlib.sha256(json_str.encode("utf-8")).hexdigest()
+    source_dir = Path(__file__).resolve().parent
+    app_css = (source_dir / "standalone_mobile.css").read_text(encoding="utf-8")
+    app_js = (source_dir / "standalone_app.js").read_text(encoding="utf-8")
     total_questions = len(questions_data)
 
     html_template = f"""<!DOCTYPE html>
@@ -31,10 +38,6 @@ def main():
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="description" content="Metabolic Biochemistry Year 2 MCQ review. Practice {total_questions} PDF questions with randomized choices and highlighted answers.">
   <title>Metabolic Biochemistry QCM Review 2026 — University of Puthisastra</title>
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   
   <style>
     :root {{
@@ -122,7 +125,7 @@ def main():
     }}
 
     body {{
-      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       background-color: var(--bg-body);
       color: var(--text-main);
       line-height: 1.5;
@@ -923,6 +926,7 @@ def main():
 
     .hidden {{ display: none !important; }}
   </style>
+  <style>{app_css}</style>
 </head>
 <body>
 
@@ -938,21 +942,26 @@ def main():
       </a>
 
       <div class="header-actions">
-        <button type="button" class="btn-shuffle-top" id="btnShuffleAll" title="Randomize both questions & answer choices">
-          <span>🎲</span> <span class="btn-lbl">Shuffle All</span>
-        </button>
-        <button type="button" class="btn-icon" id="btnThemeToggle" title="Toggle Dark/Light Mode">🌙</button>
+        <button type="button" class="btn-icon header-star" id="btnStarOnly" aria-label="Show starred questions" aria-pressed="false" title="Show starred questions">☆</button>
+        <button type="button" class="btn-icon header-navigator" id="btnOpenNavigator" aria-label="Open question navigator" title="Question navigator">▦</button>
+        <button type="button" class="btn-icon" id="btnOpenSettings" aria-label="Open study settings" title="Study settings">⚙</button>
+        <button type="button" class="btn-icon" id="btnThemeToggle" aria-label="Toggle dark mode" title="Toggle Dark/Light Mode">🌙</button>
       </div>
     </div>
+    <div class="header-progress" role="progressbar" aria-label="Questions answered" aria-valuemin="0" aria-valuemax="{total_questions}" aria-valuenow="0" id="headerProgress"><div id="progressFill"></div></div>
   </header>
 
   <!-- Main Content Container -->
   <main>
+    <div class="study-notice hidden" id="studyNotice" role="status"></div>
 
-    <!-- Controls Panel -->
+    <!-- Study settings -->
+    <dialog class="study-sheet settings-dialog" id="settingsDialog" aria-labelledby="settingsTitle" closedby="any">
+      <div class="sheet-card">
+      <div class="sheet-heading"><h2 id="settingsTitle">Study settings</h2><button type="button" class="sheet-close" data-close-sheet aria-label="Close settings">×</button></div>
     <div class="controls-panel">
       <!-- Mobile Bar Toggle -->
-      <button type="button" class="controls-toggle-btn" id="btnToggleControls">
+      <button type="button" class="controls-toggle-btn hidden" id="btnToggleControls">
         <span class="controls-toggle-left">
           <span>⚙️</span>
           <span id="controlsSummaryText">Metabolic Biochemistry • {total_questions} Qs</span>
@@ -1015,10 +1024,13 @@ def main():
           <button type="button" class="btn-nav btn-nav-outline" id="btnResetProgress" style="padding:0.35rem 0.75rem; font-size:0.78rem; min-height:36px; flex:none;">
             🔄 Reset
           </button>
+          <button type="button" class="btn-nav btn-nav-outline" id="btnShuffleAll">🎲 Shuffle &amp; restart</button>
 
         </div>
       </div>
     </div>
+      </div>
+    </dialog>
 
     <!-- Question + Palette Grid -->
     <div class="content-grid">
@@ -1080,8 +1092,35 @@ def main():
 
   </main>
 
+  <nav class="mobile-nav" aria-label="Question navigation">
+    <button type="button" id="btnPrevMobile" class="mobile-nav-prev">← Prev</button>
+    <button type="button" id="btnNavigatorMobile" class="mobile-nav-center" aria-label="Open question navigator">Q <span id="mobilePosition">1/160</span> ▦</button>
+    <button type="button" id="btnNextMobile" class="mobile-nav-next">Next →</button>
+  </nav>
+
+  <dialog class="study-sheet navigator-dialog" id="navigatorDialog" aria-labelledby="navigatorTitle" closedby="any">
+    <div class="sheet-card">
+      <div class="sheet-handle" aria-hidden="true"></div>
+      <div class="sheet-heading"><h2 id="navigatorTitle">Question navigator</h2><button type="button" class="sheet-close" data-close-sheet aria-label="Close navigator">×</button></div>
+      <p class="sheet-subtitle" id="navigatorCount">0 / 160 answered</p>
+      <div class="navigator-filters" id="navigatorFilters" role="group" aria-label="Filter questions">
+        <button type="button" data-filter="all" aria-pressed="true">All</button>
+        <button type="button" data-filter="correct" aria-pressed="false">Correct</button>
+        <button type="button" data-filter="wrong" aria-pressed="false">Wrong</button>
+        <button type="button" data-filter="unanswered" aria-pressed="false">Unanswered</button>
+        <button type="button" data-filter="starred" aria-pressed="false">Starred</button>
+      </div>
+      <div class="palette-grid sheet-palette" id="sheetPaletteGrid"></div>
+      <p class="navigator-empty hidden" id="navigatorEmpty">No questions match this filter.</p>
+    </div>
+  </dialog>
+
+  <dialog class="modal-dialog" id="staleDialog" aria-labelledby="staleTitle" closedby="none">
+    <div class="modal-card"><div class="modal-icon-badge">↻</div><h3 class="modal-title" id="staleTitle">Progress changed in another tab</h3><p class="modal-desc">Reload to continue with the latest saved session.</p><button type="button" class="btn-modal btn-modal-confirm" id="btnReloadSession">Reload saved session</button></div>
+  </dialog>
+
   <!-- Confirmation Modal Dialog -->
-  <dialog class="modal-dialog" id="confirmModal">
+  <dialog class="modal-dialog" id="confirmModal" closedby="any">
     <div class="modal-card">
       <div class="modal-icon-badge" id="modalIcon">🎲</div>
       <h3 class="modal-title" id="modalTitle">Shuffle All Questions?</h3>
@@ -1101,553 +1140,9 @@ def main():
   </script>
 
   <!-- Application Logic -->
+  <script>window.DATASET_HASH = "{dataset_hash}";</script>
   <script>
-    (function () {{
-      "use strict";
-
-      const rawDB = window.RAW_QUESTIONS || [];
-      if (!rawDB.length) {{
-        alert("Questions database is empty or failed to load.");
-        return;
-      }}
-
-      // Application State
-      const state = {{
-        activeQuestions: [],
-        currentIndex: 0,
-        userAnswers: {{}},
-        starredSet: new Set(JSON.parse(localStorage.getItem("metabolic_biochem_stars") || "[]")),
-        
-        // Settings
-        filterLecture: "all",
-        filterCount: "all",
-        shuffleQuestions: true,
-        shuffleAnswers: true,
-        starOnly: false,
-        paletteOpenMobile: false
-      }};
-
-      // DOM Elements
-      const el = {{
-        themeBtn: document.getElementById("btnThemeToggle"),
-        btnShuffleAll: document.getElementById("btnShuffleAll"),
-        lectureFilter: document.getElementById("lectureFilter"),
-        countFilter: document.getElementById("countFilter"),
-        checkShuffleQ: document.getElementById("checkShuffleQuestions"),
-        checkShuffleA: document.getElementById("checkShuffleAnswers"),
-        checkStarOnly: document.getElementById("checkStarOnly"),
-        btnResetProgress: document.getElementById("btnResetProgress"),
-
-        btnToggleControls: document.getElementById("btnToggleControls"),
-        controlsBody: document.getElementById("controlsBody"),
-        controlsArrow: document.getElementById("controlsArrow"),
-        controlsSummaryText: document.getElementById("controlsSummaryText"),
-        progressPillMobile: document.getElementById("progressPillMobile"),
-
-        progressPill: document.getElementById("progressPill"),
-        accuracyPill: document.getElementById("accuracyPill"),
-
-        confirmModal: document.getElementById("confirmModal"),
-        modalIcon: document.getElementById("modalIcon"),
-        modalTitle: document.getElementById("modalTitle"),
-        modalDesc: document.getElementById("modalDesc"),
-        btnModalCancel: document.getElementById("btnModalCancel"),
-        btnModalConfirm: document.getElementById("btnModalConfirm"),
-
-        badgeLecture: document.getElementById("badgeLecture"),
-        badgeOrigQ: document.getElementById("badgeOrigQ"),
-        badgePosition: document.getElementById("badgePosition"),
-        btnStarQ: document.getElementById("btnStarQ"),
-        qTitle: document.getElementById("qTitle"),
-        optionsContainer: document.getElementById("optionsContainer"),
-
-        explBox: document.getElementById("explBox"),
-        explAnswerLabel: document.getElementById("explAnswerLabel"),
-
-        btnPrev: document.getElementById("btnPrev"),
-        btnNext: document.getElementById("btnNext"),
-
-        btnTogglePalette: document.getElementById("btnTogglePalette"),
-        paletteBody: document.getElementById("paletteBody"),
-        palArrow: document.getElementById("palArrow"),
-        palDrawerCounter: document.getElementById("palDrawerCounter"),
-        paletteGrid: document.getElementById("paletteGrid"),
-        palAnsweredCounter: document.getElementById("palAnsweredCounter"),
-        touchArea: document.getElementById("touchArea")
-      }};
-
-      // Fisher-Yates Shuffle
-      function shuffle(array) {{
-        const arr = [...array];
-        for (let i = arr.length - 1; i > 0; i--) {{
-          const j = Math.floor(Math.random() * (i + 1));
-          [arr[i], arr[j]] = [arr[j], arr[i]];
-        }}
-        return arr;
-      }}
-
-      // Theme Init
-      function initTheme() {{
-        const saved = localStorage.getItem("metabolic_theme_mode") || "light";
-        document.documentElement.setAttribute("data-theme", saved);
-        el.themeBtn.textContent = saved === "dark" ? "☀️" : "🌙";
-      }}
-
-      function toggleTheme() {{
-        const cur = document.documentElement.getAttribute("data-theme") || "light";
-        const next = cur === "light" ? "dark" : "light";
-        document.documentElement.setAttribute("data-theme", next);
-        localStorage.setItem("metabolic_theme_mode", next);
-        el.themeBtn.textContent = next === "dark" ? "☀️" : "🌙";
-      }}
-
-      // Populate topic dropdown
-      function populateLectureFilter() {{
-        const map = new Map();
-        rawDB.forEach(q => {{
-          if (!map.has(q.lecture_id)) {{
-            map.set(q.lecture_id, {{ name: q.lecture_name, count: 0 }});
-          }}
-          map.get(q.lecture_id).count++;
-        }});
-
-        let html = '<option value="all">All {total_questions} Questions</option>';
-        map.forEach((val, id) => {{
-          html += `<option value="${{id}}">${{val.name}} (${{val.count}} Qs)</option>`;
-        }});
-        el.lectureFilter.innerHTML = html;
-      }}
-
-      // Build & Randomize Session Questions
-      function buildSession(resetAnswers = false) {{
-        if (resetAnswers) {{
-          state.userAnswers = {{}};
-        }}
-
-        let list = [...rawDB];
-        if (state.filterLecture !== "all") {{
-          const lid = parseInt(state.filterLecture, 10);
-          list = list.filter(q => q.lecture_id === lid);
-        }}
-
-        if (state.starOnly) {{
-          list = list.filter(q => state.starredSet.has(q.global_id));
-        }}
-
-        if (list.length === 0) {{
-          alert("No questions match your current filter criteria.");
-          if (state.starOnly) {{
-            state.starOnly = false;
-            el.checkStarOnly.checked = false;
-            buildSession(false);
-            return;
-          }}
-        }}
-
-        if (state.shuffleQuestions) {{
-          list = shuffle(list);
-        }}
-
-        if (state.filterCount !== "all") {{
-          const maxCount = parseInt(state.filterCount, 10);
-          list = list.slice(0, maxCount);
-        }}
-
-        state.activeQuestions = list.map((q, idx) => {{
-          const rawOpts = [];
-          ["A", "B", "C", "D", "E"].forEach(letter => {{
-            if (q.options[letter]) {{
-              rawOpts.push({{
-                origLetter: letter,
-                text: q.options[letter],
-                isCorrect: (letter === q.correct_answer)
-              }});
-            }}
-          }});
-
-          const finalOpts = state.shuffleAnswers ? shuffle(rawOpts) : rawOpts;
-          const alphabet = ["A", "B", "C", "D", "E"];
-          const formattedOpts = finalOpts.map((opt, oIdx) => ({{
-            displayLetter: alphabet[oIdx],
-            text: opt.text,
-            isCorrect: opt.isCorrect,
-            origLetter: opt.origLetter
-          }}));
-
-          return {{
-            uniqueId: q.global_id + "_" + idx,
-            globalId: q.global_id,
-            lectureId: q.lecture_id,
-            lectureName: q.lecture_name,
-            origQId: q.question_id,
-            questionText: q.question,
-            options: formattedOpts,
-            correctText: q.correct_text
-          }};
-        }});
-
-        state.currentIndex = 0;
-        renderQuestion();
-        renderPalette();
-        updateStats();
-        updateControlsSummary();
-      }}
-
-      // Render Current Question
-      function renderQuestion() {{
-        if (!state.activeQuestions.length) return;
-        const q = state.activeQuestions[state.currentIndex];
-        if (!q) return;
-
-        el.badgeLecture.textContent = q.lectureName;
-        el.badgeOrigQ.textContent = `Original Q${{q.origQId}}`;
-        el.badgePosition.textContent = `Question ${{state.currentIndex + 1}} of ${{state.activeQuestions.length}}`;
-        el.qTitle.textContent = q.questionText;
-
-        const isStarred = state.starredSet.has(q.globalId);
-        el.btnStarQ.classList.toggle("starred", isStarred);
-        el.btnStarQ.textContent = isStarred ? "★" : "☆";
-
-        const isFirst = (state.currentIndex === 0);
-        const isLast = (state.currentIndex === state.activeQuestions.length - 1);
-        el.btnPrev.disabled = isFirst;
-        el.btnNext.disabled = isLast;
-
-        const selectedOptIdx = state.userAnswers[q.uniqueId];
-        const isAnswered = (selectedOptIdx !== undefined);
-
-        let html = "";
-        q.options.forEach((opt, optIdx) => {{
-          let btnClass = "opt-btn";
-          if (isAnswered) {{
-            btnClass += " locked";
-            if (opt.isCorrect) {{
-              btnClass += " is-correct";
-            }} else if (optIdx === selectedOptIdx) {{
-              btnClass += " is-wrong";
-            }}
-          }}
-
-          html += `
-            <button type="button" class="${{btnClass}}" data-opt-index="${{optIdx}}">
-              <span class="opt-tag">${{opt.displayLetter}}</span>
-              <span class="opt-text">${{opt.text}}</span>
-            </button>
-          `;
-        }});
-
-        el.optionsContainer.innerHTML = html;
-
-        el.optionsContainer.querySelectorAll(".opt-btn").forEach(btn => {{
-          btn.addEventListener("click", () => {{
-            const optIdx = parseInt(btn.getAttribute("data-opt-index"), 10);
-            handleOptionSelect(optIdx);
-          }});
-        }});
-
-        if (isAnswered) {{
-          el.explBox.classList.remove("hidden");
-          const correctOpt = q.options.find(o => o.isCorrect);
-          el.explAnswerLabel.textContent = `${{correctOpt ? correctOpt.displayLetter : ""}}) ${{q.correctText}}`;
-        }} else {{
-          el.explBox.classList.add("hidden");
-        }}
-
-        renderPalette();
-      }}
-
-      // Handle Option Selection
-      function handleOptionSelect(optIndex) {{
-        const q = state.activeQuestions[state.currentIndex];
-        if (!q) return;
-
-        state.userAnswers[q.uniqueId] = optIndex;
-        renderQuestion();
-        updateStats();
-      }}
-
-      // Smart scroll helper: keeps question card comfortably in view without scrolling to top of webpage
-      function scrollQuestionIntoView() {{
-        const card = el.touchArea || document.getElementById("touchArea");
-        if (!card) return;
-        const header = document.querySelector("header");
-        const headerHeight = header ? header.offsetHeight : 54;
-        const rect = card.getBoundingClientRect();
-        
-        // Keep the question card in view after changing questions
-        // or pushed down below the fold (> 120px under header):
-        if (rect.top < headerHeight || rect.top > headerHeight + 120) {{
-          const cardAbsoluteTop = window.scrollY + rect.top;
-          const targetY = Math.max(0, cardAbsoluteTop - headerHeight - 12);
-          window.scrollTo({{ top: targetY, behavior: "smooth" }});
-        }}
-      }}
-
-      // Palette Rendering
-      function renderPalette() {{
-        let html = "";
-        state.activeQuestions.forEach((q, idx) => {{
-          let btnClass = "pal-btn";
-          if (idx === state.currentIndex) btnClass += " current";
-
-          const chosenIdx = state.userAnswers[q.uniqueId];
-          if (chosenIdx !== undefined) {{
-            const chosenOpt = q.options[chosenIdx];
-            btnClass += (chosenOpt && chosenOpt.isCorrect) ? " correct" : " wrong";
-          }}
-
-          html += `<button type="button" class="${{btnClass}}" data-nav-index="${{idx}}">${{idx + 1}}</button>`;
-        }});
-
-        el.paletteGrid.innerHTML = html;
-        el.paletteGrid.querySelectorAll(".pal-btn").forEach(btn => {{
-          btn.addEventListener("click", () => {{
-            state.currentIndex = parseInt(btn.getAttribute("data-nav-index"), 10);
-            renderQuestion();
-            scrollQuestionIntoView();
-          }});
-        }});
-
-        const answeredCount = Object.keys(state.userAnswers).length;
-        const total = state.activeQuestions.length;
-        el.palAnsweredCounter.textContent = `${{answeredCount}} / ${{total}}`;
-        if (el.palDrawerCounter) el.palDrawerCounter.textContent = `${{answeredCount}}/${{total}}`;
-      }}
-
-      // Update Statistics
-      function updateStats() {{
-        const answeredCount = Object.keys(state.userAnswers).length;
-        let correctCount = 0;
-
-        state.activeQuestions.forEach(q => {{
-          const chosenIdx = state.userAnswers[q.uniqueId];
-          if (chosenIdx !== undefined && q.options[chosenIdx] && q.options[chosenIdx].isCorrect) {{
-            correctCount++;
-          }}
-        }});
-
-        const total = state.activeQuestions.length;
-        el.progressPill.textContent = `${{answeredCount}} / ${{total}} Answered`;
-        if (el.progressPillMobile) el.progressPillMobile.textContent = `${{answeredCount}}/${{total}}`;
-
-        const accuracy = answeredCount > 0 ? Math.round((correctCount / answeredCount) * 100) : 0;
-        el.accuracyPill.textContent = `${{correctCount}} Correct (${{accuracy}}%)`;
-      }}
-
-      // Mobile Controls Summary & Drawer Toggle
-      function updateControlsSummary() {{
-        if (!el.controlsSummaryText) return;
-        const total = state.activeQuestions.length;
-        if (state.filterLecture === "all") {{
-          el.controlsSummaryText.textContent = `Metabolic Biochemistry • ${{total}} Qs`;
-        }} else {{
-          const opt = el.lectureFilter.options[el.lectureFilter.selectedIndex];
-          const name = opt ? opt.textContent.split(" (")[0] : `Metabolic Biochemistry`;
-          el.controlsSummaryText.textContent = `${{name}} • ${{total}} Qs`;
-        }}
-      }}
-
-      let controlsOpenMobile = false;
-      function toggleControls() {{
-        controlsOpenMobile = !controlsOpenMobile;
-        el.controlsBody.classList.toggle("is-open", controlsOpenMobile);
-        el.controlsArrow.textContent = controlsOpenMobile ? "▲" : "▼";
-      }}
-
-      // Star Toggle
-      function toggleStar() {{
-        const q = state.activeQuestions[state.currentIndex];
-        if (!q) return;
-
-        if (state.starredSet.has(q.globalId)) {{
-          state.starredSet.delete(q.globalId);
-        }} else {{
-          state.starredSet.add(q.globalId);
-        }}
-        localStorage.setItem("metabolic_biochem_stars", JSON.stringify(Array.from(state.starredSet)));
-        renderQuestion();
-      }}
-
-      // Next / Prev Actions with smart scroll (NO jump to top)
-      function goToPrev() {{
-        if (state.currentIndex > 0) {{
-          state.currentIndex--;
-          renderQuestion();
-          scrollQuestionIntoView();
-        }}
-      }}
-
-      function goToNext() {{
-        if (state.currentIndex < state.activeQuestions.length - 1) {{
-          state.currentIndex++;
-          renderQuestion();
-          scrollQuestionIntoView();
-        }}
-      }}
-
-      // Mobile Drawer Toggle
-      function togglePaletteDrawer() {{
-        state.paletteOpenMobile = !state.paletteOpenMobile;
-        el.paletteBody.classList.toggle("is-open", state.paletteOpenMobile);
-        el.palArrow.textContent = state.paletteOpenMobile ? "▲" : "▼";
-      }}
-
-      // Confirmation Modal Controller
-      let onModalConfirmCallback = null;
-
-      function showConfirmModal(opts) {{
-        if (!el.confirmModal) return;
-        if (el.modalIcon) el.modalIcon.textContent = opts.icon || "⚠️";
-        if (el.modalTitle) el.modalTitle.textContent = opts.title || "Are you sure?";
-        if (el.modalDesc) el.modalDesc.innerHTML = opts.desc || "";
-        if (el.btnModalConfirm) {{
-          el.btnModalConfirm.textContent = opts.confirmText || "Confirm";
-          el.btnModalConfirm.classList.toggle("danger", !!opts.isDanger);
-        }}
-        onModalConfirmCallback = opts.onConfirm;
-
-        if (typeof el.confirmModal.showModal === "function") {{
-          el.confirmModal.showModal();
-        }} else {{
-          el.confirmModal.setAttribute("open", "");
-        }}
-      }}
-
-      function closeModal() {{
-        if (!el.confirmModal) return;
-        if (typeof el.confirmModal.close === "function") {{
-          el.confirmModal.close();
-        }} else {{
-          el.confirmModal.removeAttribute("open");
-        }}
-        onModalConfirmCallback = null;
-      }}
-
-      // Event Listeners Setup
-      function setupListeners() {{
-        el.themeBtn.addEventListener("click", toggleTheme);
-
-        el.btnShuffleAll.addEventListener("click", () => {{
-          const answeredCount = Object.keys(state.userAnswers).length;
-
-          showConfirmModal({{
-            icon: "🎲",
-            title: "Shuffle All Questions?",
-            desc: answeredCount > 0
-              ? `You currently have <strong>${{answeredCount}} answered question${{answeredCount > 1 ? "s" : ""}}</strong>. Shuffling will re-randomize question order & choices, and <strong>reset your progress</strong>.`
-              : "This will re-randomize both questions and choices (A–D) for a fresh practice session.",
-            confirmText: "Shuffle & Restart",
-            isDanger: false,
-            onConfirm: () => {{
-              state.shuffleQuestions = true;
-              state.shuffleAnswers = true;
-              el.checkShuffleQ.checked = true;
-              el.checkShuffleA.checked = true;
-              buildSession(true);
-            }}
-          }});
-        }});
-
-        el.lectureFilter.addEventListener("change", (e) => {{
-          state.filterLecture = e.target.value;
-          buildSession(true);
-        }});
-
-        el.countFilter.addEventListener("change", (e) => {{
-          state.filterCount = e.target.value;
-          buildSession(true);
-        }});
-
-        el.checkShuffleQ.addEventListener("change", (e) => {{
-          state.shuffleQuestions = e.target.checked;
-          buildSession(true);
-        }});
-
-        el.checkShuffleA.addEventListener("change", (e) => {{
-          state.shuffleAnswers = e.target.checked;
-          buildSession(true);
-        }});
-
-        el.checkStarOnly.addEventListener("change", (e) => {{
-          state.starOnly = e.target.checked;
-          buildSession(true);
-        }});
-
-        el.btnResetProgress.addEventListener("click", () => {{
-          const answeredCount = Object.keys(state.userAnswers).length;
-          if (answeredCount === 0) {{
-            alert("No progress to reset yet.");
-            return;
-          }}
-
-          showConfirmModal({{
-            icon: "🔄",
-            title: "Reset Practice Progress?",
-            desc: `This will clear all <strong>${{answeredCount}} answered question${{answeredCount > 1 ? "s" : ""}}</strong> and restart your score from 0.`,
-            confirmText: "Reset Progress",
-            isDanger: true,
-            onConfirm: () => {{
-              state.userAnswers = {{}};
-              renderQuestion();
-              renderPalette();
-              updateStats();
-            }}
-          }});
-        }});
-
-        el.btnPrev.addEventListener("click", goToPrev);
-        el.btnNext.addEventListener("click", goToNext);
-
-        el.btnStarQ.addEventListener("click", toggleStar);
-        if (el.btnTogglePalette) el.btnTogglePalette.addEventListener("click", togglePaletteDrawer);
-        if (el.btnToggleControls) el.btnToggleControls.addEventListener("click", toggleControls);
-
-        if (el.btnModalCancel) el.btnModalCancel.addEventListener("click", closeModal);
-        if (el.btnModalConfirm) {{
-          el.btnModalConfirm.addEventListener("click", () => {{
-            const cb = onModalConfirmCallback;
-            closeModal();
-            if (cb) cb();
-          }});
-        }}
-        if (el.confirmModal) {{
-          el.confirmModal.addEventListener("click", (e) => {{
-            const rect = el.confirmModal.getBoundingClientRect();
-            const isInDialog = (rect.top <= e.clientY && e.clientY <= rect.top + rect.height
-              && rect.left <= e.clientX && e.clientX <= rect.left + rect.width);
-            if (!isInDialog) closeModal();
-          }});
-          el.confirmModal.addEventListener("cancel", () => {{
-            onModalConfirmCallback = null;
-          }});
-        }}
-
-        window.addEventListener("keydown", (e) => {{
-          if (["1", "a", "A"].includes(e.key)) handleOptionSelect(0);
-          else if (["2", "b", "B"].includes(e.key)) handleOptionSelect(1);
-          else if (["3", "c", "C"].includes(e.key)) handleOptionSelect(2);
-          else if (["4", "d", "D"].includes(e.key)) handleOptionSelect(3);
-          else if (e.key === "ArrowLeft") goToPrev();
-          else if (e.key === "ArrowRight") goToNext();
-          else if (e.key.toLowerCase() === "s") toggleStar();
-        }});
-
-        // Warn before reload or navigating away if student has answered questions
-        window.addEventListener("beforeunload", (e) => {{
-          if (Object.keys(state.userAnswers).length > 0) {{
-            e.preventDefault();
-            e.returnValue = "";
-            return "";
-          }}
-        }});
-      }}
-
-      // Initialize
-      initTheme();
-      populateLectureFilter();
-      setupListeners();
-      buildSession(true);
-    }})();
+{app_js}
   </script>
 </body>
 </html>
