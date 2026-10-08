@@ -7,7 +7,7 @@ Builds a completely self-contained, standalone, mobile-first index.html file con
 - Smart in-place scrolling (keeps question in view without jumping to top)
 - Mobile collapsible Question Navigator drawer
 - Full dual randomization (Questions + Options)
-- Embedded questions database (all 241 questions with 100% verified highlighted answers)
+- Embedded metabolic biochemistry MCQs with PDF-highlighted answers
 - Windows double-click ready (runs natively in Edge, Chrome, Firefox with zero tools)
 - Vercel ready (static site deployment out-of-the-box)
 """
@@ -19,6 +19,7 @@ def main():
         questions_data = json.load(f)
 
     json_str = json.dumps(questions_data, ensure_ascii=False)
+    total_questions = len(questions_data)
 
     html_template = f"""<!DOCTYPE html>
 <html lang="en" data-theme="light">
@@ -28,8 +29,8 @@ def main():
   <meta name="theme-color" content="#2563eb">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  <meta name="description" content="Virology QCM Exam Review 2026 for University of Puthisastra. Practice 241 official questions with randomized choices, answers, and explanations.">
-  <title>Virology QCM Review 2026 — University of Puthisastra</title>
+  <meta name="description" content="Metabolic Biochemistry Year 2 MCQ review. Practice {total_questions} PDF questions with randomized choices and highlighted answers.">
+  <title>Metabolic Biochemistry QCM Review 2026 — University of Puthisastra</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -606,7 +607,7 @@ def main():
       border-color: var(--danger) !important;
     }}
 
-    /* Explanation Box */
+    /* Highlighted Answer Box */
     .expl-box {{
       background: var(--bg-subtle);
       border-left: 4px solid var(--success);
@@ -623,38 +624,7 @@ def main():
       font-weight: 800;
       font-size: 0.9rem;
       color: var(--success-text);
-      margin-bottom: 0.4rem;
       flex-wrap: wrap;
-    }}
-
-    .expl-content {{
-      font-size: 0.88rem;
-      line-height: 1.5;
-      color: var(--text-main);
-    }}
-
-    .expl-takeaway {{
-      margin-top: 0.65rem;
-      padding: 0.5rem 0.75rem;
-      background: var(--bg-card);
-      border: 1px dashed var(--border);
-      border-radius: var(--radius-sm);
-      font-size: 0.82rem;
-      display: flex;
-      align-items: flex-start;
-      gap: 0.4rem;
-      line-height: 1.4;
-    }}
-
-    .takeaway-lbl {{
-      background: var(--warning-light);
-      color: var(--warning-text);
-      font-weight: 800;
-      font-size: 0.68rem;
-      padding: 0.15rem 0.4rem;
-      border-radius: var(--radius-sm);
-      text-transform: uppercase;
-      flex-shrink: 0;
     }}
 
     /* Navigation Bar (Single in-card button set, thumb-friendly on mobile) */
@@ -962,8 +932,8 @@ def main():
       <a href="#" class="brand">
         <div class="brand-icon">🔬</div>
         <div class="brand-title">
-          <h1>Virology QCM</h1>
-          <p>UP Exam 2026 &bull; 241 Questions</p>
+          <h1>Metabolic Biochemistry QCM</h1>
+          <p>Year 2 Assessment &bull; {total_questions} Questions</p>
         </div>
       </a>
 
@@ -985,10 +955,10 @@ def main():
       <button type="button" class="controls-toggle-btn" id="btnToggleControls">
         <span class="controls-toggle-left">
           <span>⚙️</span>
-          <span id="controlsSummaryText">All 11 Lectures • 241 Qs</span>
+          <span id="controlsSummaryText">Metabolic Biochemistry • {total_questions} Qs</span>
         </span>
         <span class="controls-toggle-right">
-          <span class="pill pill-blue" id="progressPillMobile" style="font-size:0.75rem; padding:0.2rem 0.55rem;">0/241</span>
+          <span class="pill pill-blue" id="progressPillMobile" style="font-size:0.75rem; padding:0.2rem 0.55rem;">0/{total_questions}</span>
           <span id="controlsArrow">▼</span>
         </span>
       </button>
@@ -996,9 +966,9 @@ def main():
       <div class="controls-body" id="controlsBody">
         <div class="controls-row">
           
-          <!-- Filter Lecture -->
+          <!-- Filter Topic -->
           <div class="filter-item">
-            <span class="filter-label">Lecture:</span>
+            <span class="filter-label">Topic:</span>
             <select id="lectureFilter" class="select-box">
               <!-- Populated via JS -->
             </select>
@@ -1008,7 +978,7 @@ def main():
           <div class="filter-item">
             <span class="filter-label">Count:</span>
             <select id="countFilter" class="select-box">
-              <option value="all" selected>All Questions</option>
+              <option value="all" selected>All {total_questions} Questions</option>
               <option value="10">10 Questions (Quick Test)</option>
               <option value="20">20 Questions</option>
               <option value="50">50 Questions</option>
@@ -1018,7 +988,7 @@ def main():
 
           <!-- Stats Counter -->
           <div class="stats-pills">
-            <span class="pill pill-blue" id="progressPill">0 / 241 Answered</span>
+            <span class="pill pill-blue" id="progressPill">0 / {total_questions} Answered</span>
             <span class="pill pill-green" id="accuracyPill">0% Accuracy</span>
           </div>
 
@@ -1058,9 +1028,9 @@ def main():
         
         <div class="q-card-header">
           <div class="q-meta-badges">
-            <span class="badge-lec" id="badgeLecture">Lecture 1: HIV</span>
+            <span class="badge-lec" id="badgeLecture">Metabolic Biochemistry</span>
             <span class="badge-orig" id="badgeOrigQ">Original Q1</span>
-            <span class="badge-orig" id="badgePosition">Question 1 of 241</span>
+            <span class="badge-orig" id="badgePosition">Question 1 of {total_questions}</span>
           </div>
           <button type="button" class="btn-star" id="btnStarQ" title="Star / Bookmark for review">☆</button>
         </div>
@@ -1072,16 +1042,11 @@ def main():
           <!-- Dynamic options buttons -->
         </div>
 
-        <!-- Explanation & Takeaway Box -->
+        <!-- Highlighted answer box -->
         <div class="expl-box hidden" id="explBox">
           <div class="expl-header">
-            <span>✓ Highlighted Answer:</span>
+            <span>✓ Highlighted Correct Answer:</span>
             <span id="explAnswerLabel" style="color:var(--text-main);"></span>
-          </div>
-          <p class="expl-content" id="explText"></p>
-          <div class="expl-takeaway">
-            <span class="takeaway-lbl">Takeaway</span>
-            <span id="explTakeaway" style="font-weight:600;"></span>
           </div>
         </div>
 
@@ -1096,14 +1061,14 @@ def main():
       <!-- Palette Sidebar / Collapsible Mobile Drawer -->
       <aside class="palette-sidebar">
         <button type="button" class="palette-toggle-btn" id="btnTogglePalette">
-          <span>📑 Question Navigator (<span id="palDrawerCounter">0/241</span>)</span>
+          <span>📑 Question Navigator (<span id="palDrawerCounter">0/{total_questions}</span>)</span>
           <span id="palArrow">▼</span>
         </button>
 
         <div class="palette-body" id="paletteBody">
           <div class="palette-header">
             <span>Question Navigator</span>
-            <span style="font-size:0.75rem; color:var(--text-muted); font-weight:normal;" id="palAnsweredCounter">0 / 241</span>
+            <span style="font-size:0.75rem; color:var(--text-muted); font-weight:normal;" id="palAnsweredCounter">0 / {total_questions}</span>
           </div>
           <div class="palette-grid" id="paletteGrid">
             <!-- Grid items -->
@@ -1151,7 +1116,7 @@ def main():
         activeQuestions: [],
         currentIndex: 0,
         userAnswers: {{}},
-        starredSet: new Set(JSON.parse(localStorage.getItem("virology_stars_up") || "[]")),
+        starredSet: new Set(JSON.parse(localStorage.getItem("metabolic_biochem_stars") || "[]")),
         
         // Settings
         filterLecture: "all",
@@ -1198,8 +1163,6 @@ def main():
 
         explBox: document.getElementById("explBox"),
         explAnswerLabel: document.getElementById("explAnswerLabel"),
-        explText: document.getElementById("explText"),
-        explTakeaway: document.getElementById("explTakeaway"),
 
         btnPrev: document.getElementById("btnPrev"),
         btnNext: document.getElementById("btnNext"),
@@ -1225,7 +1188,7 @@ def main():
 
       // Theme Init
       function initTheme() {{
-        const saved = localStorage.getItem("virology_theme_mode") || "light";
+        const saved = localStorage.getItem("metabolic_theme_mode") || "light";
         document.documentElement.setAttribute("data-theme", saved);
         el.themeBtn.textContent = saved === "dark" ? "☀️" : "🌙";
       }}
@@ -1234,11 +1197,11 @@ def main():
         const cur = document.documentElement.getAttribute("data-theme") || "light";
         const next = cur === "light" ? "dark" : "light";
         document.documentElement.setAttribute("data-theme", next);
-        localStorage.setItem("virology_theme_mode", next);
+        localStorage.setItem("metabolic_theme_mode", next);
         el.themeBtn.textContent = next === "dark" ? "☀️" : "🌙";
       }}
 
-      // Populate Lecture Dropdown
+      // Populate topic dropdown
       function populateLectureFilter() {{
         const map = new Map();
         rawDB.forEach(q => {{
@@ -1248,9 +1211,9 @@ def main():
           map.get(q.lecture_id).count++;
         }});
 
-        let html = '<option value="all">All 11 Lectures (241 Questions)</option>';
+        let html = '<option value="all">All {total_questions} Questions</option>';
         map.forEach((val, id) => {{
-          html += `<option value="${{id}}">L${{id}}: ${{val.name}} (${{val.count}} Qs)</option>`;
+          html += `<option value="${{id}}">${{val.name}} (${{val.count}} Qs)</option>`;
         }});
         el.lectureFilter.innerHTML = html;
       }}
@@ -1319,8 +1282,6 @@ def main():
             origQId: q.question_id,
             questionText: q.question,
             options: formattedOpts,
-            explanation: q.explanation,
-            takeaway: q.takeaway,
             correctText: q.correct_text
           }};
         }});
@@ -1338,7 +1299,7 @@ def main():
         const q = state.activeQuestions[state.currentIndex];
         if (!q) return;
 
-        el.badgeLecture.textContent = `L${{q.lectureId}}: ${{q.lectureName}}`;
+        el.badgeLecture.textContent = q.lectureName;
         el.badgeOrigQ.textContent = `Original Q${{q.origQId}}`;
         el.badgePosition.textContent = `Question ${{state.currentIndex + 1}} of ${{state.activeQuestions.length}}`;
         el.qTitle.textContent = q.questionText;
@@ -1388,8 +1349,6 @@ def main():
           el.explBox.classList.remove("hidden");
           const correctOpt = q.options.find(o => o.isCorrect);
           el.explAnswerLabel.textContent = `${{correctOpt ? correctOpt.displayLetter : ""}}) ${{q.correctText}}`;
-          el.explText.textContent = q.explanation;
-          el.explTakeaway.textContent = q.takeaway;
         }} else {{
           el.explBox.classList.add("hidden");
         }}
@@ -1415,7 +1374,7 @@ def main():
         const headerHeight = header ? header.offsetHeight : 54;
         const rect = card.getBoundingClientRect();
         
-        // If top of question card is hidden above header (user scrolled down to read explanations)
+        // Keep the question card in view after changing questions
         // or pushed down below the fold (> 120px under header):
         if (rect.top < headerHeight || rect.top > headerHeight + 120) {{
           const cardAbsoluteTop = window.scrollY + rect.top;
@@ -1480,10 +1439,10 @@ def main():
         if (!el.controlsSummaryText) return;
         const total = state.activeQuestions.length;
         if (state.filterLecture === "all") {{
-          el.controlsSummaryText.textContent = `All 11 Lectures • ${{total}} Qs`;
+          el.controlsSummaryText.textContent = `Metabolic Biochemistry • ${{total}} Qs`;
         }} else {{
           const opt = el.lectureFilter.options[el.lectureFilter.selectedIndex];
-          const name = opt ? opt.textContent.split(" (")[0] : `Lecture ${{state.filterLecture}}`;
+          const name = opt ? opt.textContent.split(" (")[0] : `Metabolic Biochemistry`;
           el.controlsSummaryText.textContent = `${{name}} • ${{total}} Qs`;
         }}
       }}
@@ -1505,7 +1464,7 @@ def main():
         }} else {{
           state.starredSet.add(q.globalId);
         }}
-        localStorage.setItem("virology_stars_up", JSON.stringify(Array.from(state.starredSet)));
+        localStorage.setItem("metabolic_biochem_stars", JSON.stringify(Array.from(state.starredSet)));
         renderQuestion();
       }}
 
