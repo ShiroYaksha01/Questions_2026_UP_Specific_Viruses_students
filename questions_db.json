@@ -2558,5 +2558,1575 @@
     "page": 18,
     "correct_answer": "A",
     "correct_text": "Troponin"
+  },
+  {
+    "global_id": 161,
+    "lecture_id": 2,
+    "lecture_name": "Clinical Biochemistry",
+    "question_id": 1,
+    "question": "What is the normal blood pH?",
+    "options": {
+      "A": "7.35–7.45",
+      "B": "5.55–6.45",
+      "C": "6.35–7.35",
+      "D": "7.45–7.55"
+    },
+    "page": 1,
+    "source": "Clinical Bio+chem final.pdf",
+    "correct_answer": "A",
+    "correct_text": "7.35–7.45"
+  },
+  {
+    "global_id": 162,
+    "lecture_id": 2,
+    "lecture_name": "Clinical Biochemistry",
+    "question_id": 2,
+    "question": "Which of the following represents the usual reference range for arterial PCO₂?",
+    "options": {
+      "A": "35–45 mmHg",
+      "B": "45–55 mmHg",
+      "C": "25–35 mmHg",
+      "D": "25–35 mmHg"
+    },
+    "page": 1,
+    "source": "Clinical Bio+chem final.pdf",
+    "correct_answer": "A",
+    "correct_text": "35–45 mmHg"
+  },
+  {
+    "global_id": 163,
+    "lecture_id": 2,
+    "lecture_name": "Clinical Biochemistry",
+    "question_id": 3,
+    "question": "Which of the following is the usual reference range for plasma bicarbonate (HCO₃⁻)?",
+    "options": {
+      "A": "22–26 mmol/L",
+      "B": "30–36 mmol/L",
+      "C": "10–16 mmol/L",
+      "D": "18–22 mmol/L"
+    },
+    "page": 1,
+    "source": "Clinical Bio+chem final.pdf",
+    "correct_answer": "A",
+    "correct_text": "22–26 mmol/L"
+  },
+  {
+    "global_id": 164,
+    "lecture_id": 2,
+    "lecture_name": "Clinical Biochemistry",
+    "question_id": 4,
+    "question": "Which statement best defines metabolic acidosis?",
+    "options": {
+      "A": "A primary decrease in plasma bicarbonate concentration",
+      "B": "A primary increase in arterial PCO₂",
+      "C": "A primary increase in plasma bicarbonate concentration",
+      "D": "A primary decrease in arterial PCO₂"
+    },
+    "page": 1,
+    "source": "Clinical Bio+chem final.pdf",
+    "correct_answer": "A",
+    "correct_text": "A primary decrease in plasma bicarbonate concentration"
+  },
+  {
+    "global_id": 165,
+    "lecture_id": 2,
+    "lecture_name": "Clinical Biochemistry",
+    "question_id": 5,
+    "question": "Which laboratory change characterizes metabolic alkalosis?",
+    "options": {
+      "A": "A primary increase in HCO₃⁻",
+      "B": "A primary decrease in HCO₃⁻",
+      "C": "A primary increase in PCO₂",
+      "D": "A primary decrease in blood pH caused by carbon dioxide retention"
+    },
+    "page": 1,
+    "source": "Clinical Bio+chem final.pdf",
+    "correct_answer": "B",
+    "correct_text": "A primary decrease in HCO₃⁻"
+  },
+  {
+    "global_id": 166,
+    "lecture_id": 2,
+    "lecture_name": "Clinical Biochemistry",
+    "question_id": 6,
+    "question": "A patient develops carbon dioxide retention following respiratory depression. Which primary disorder is most likely?",
+    "options": {
+      "A": "Respiratory acidosis",
+      "B": "Metabolic acidosis",
+      "C": "Metabolic alkalosis",
+      "D": "Respiratory alkalosis"
+    },
+    "page": 1,
+    "source": "Clinical Bio+chem final.pdf",
+    "correct_answer": "A",
+    "correct_text": "Respiratory acidosis"
+  },
+  {
+    "global_id": 167,
+    "lecture_id": 2,
+    "lecture_name": "Clinical Biochemistry",
+    "question_id": 7,
+    "question": "Which change defines respiratory alkalosis?",
+    "options": {
+      "A": "A primary decrease in arterial PCO₂",
+      "B": "A primary increase in arterial PCO₂",
+      "C": "A primary decrease in plasma bicarbonate due to gastrointestinal loss",
+      "D": "A primary increase in plasma bicarbonate due to acid loss"
+    },
+    "page": 1,
+    "source": "Clinical Bio+chem final.pdf",
+    "correct_answer": "A",
+    "correct_text": "A primary decrease in arterial PCO₂"
+  },
+  {
+    "global_id": 168,
+    "lecture_id": 2,
+    "lecture_name": "Clinical Biochemistry",
+    "question_id": 8,
+    "question": "A patient with metabolic acidosis begins breathing deeply and rapidly. Which mechanism explains this compensatory response?",
+    "options": {
+      "A": "The lungs increase carbon dioxide elimination, lowering arterial PCO₂",
+      "B": "The kidneys reduce hydrogen ion excretion to retain acid",
+      "C": "The lungs retain carbon dioxide to restore bicarbonate",
+      "D": "The kidneys immediately eliminate all circulating bicarbonate"
+    },
+    "page": 1,
+    "source": "Clinical Bio+chem final.pdf",
+    "correct_answer": "A",
+    "correct_text": "The lungs increase carbon dioxide elimination, lowering arterial PCO₂"
+  },
+  {
+    "global_id": 169,
+    "lecture_id": 2,
+    "lecture_name": "Clinical Biochemistry",
+    "question_id": 9,
+    "question": "A patient develops metabolic alkalosis after repeated vomiting. Which response is most consistent with respiratory compensation?",
+    "options": {
+      "A": "Decreased ventilation to retain carbon dioxide and increase PCO₂",
+      "B": "Increased ventilation to lower PCO₂",
+      "C": "Increased renal bicarbonate retention in every circumstance",
+      "D": "Increased hydrogen ion production by the lungs"
+    },
+    "page": 1,
+    "source": "Clinical Bio+chem final.pdf",
+    "correct_answer": "A",
+    "correct_text": "Decreased ventilation to retain carbon dioxide and increase PCO₂"
+  },
+  {
+    "global_id": 170,
+    "lecture_id": 2,
+    "lecture_name": "Clinical Biochemistry",
+    "question_id": 10,
+    "question": "A patient with acute respiratory acidosis has an elevated arterial PCO₂. Which mechanism provides the main compensation as the disorder becomes chronic?",
+    "options": {
+      "A": "The kidneys increase hydrogen ion excretion and conserve or generate bicarbonate.",
+      "B": "The lungs increase bicarbonate production directly.",
+      "C": "The kidneys excrete more bicarbonate to lower blood pH.",
+      "D": "The respiratory system immediately eliminates the entire acid load."
+    },
+    "page": 2,
+    "source": "Clinical Bio+chem final.pdf",
+    "correct_answer": "A",
+    "correct_text": "The kidneys increase hydrogen ion excretion and conserve or generate bicarbonate."
+  },
+  {
+    "global_id": 171,
+    "lecture_id": 2,
+    "lecture_name": "Clinical Biochemistry",
+    "question_id": 11,
+    "question": "A patient develops respiratory alkalosis due to sustained hyperventilation. Which renal response helps compensate for the disturbance?",
+    "options": {
+      "A": "Increased bicarbonate excretion, reducing plasma bicarbonate concentration",
+      "B": "Increased bicarbonate reabsorption to raise blood pH further",
+      "C": "Reduced bicarbonate excretion and increased hydrogen ion retention",
+      "D": "Complete cessation of renal acid–base regulation"
+    },
+    "page": 2,
+    "source": "Clinical Bio+chem final.pdf",
+    "correct_answer": "A",
+    "correct_text": "Increased bicarbonate excretion, reducing plasma bicarbonate concentration"
+  },
+  {
+    "global_id": 172,
+    "lecture_id": 2,
+    "lecture_name": "Clinical Biochemistry",
+    "question_id": 12,
+    "question": "A patient's arterial blood pH is 7.28. Which interpretation is most appropriate?",
+    "options": {
+      "A": "Acidemia, indicating an increased hydrogen ion concentration",
+      "B": "Alkalemia caused by a low hydrogen ion concentration",
+      "C": "Normal acid–base status because the pH is close to 7.35",
+      "D": "Respiratory alkalosis because hydrogen ions are elevated"
+    },
+    "page": 2,
+    "source": "Clinical Bio+chem final.pdf",
+    "correct_answer": "A",
+    "correct_text": "Acidemia, indicating an increased hydrogen ion concentration"
+  },
+  {
+    "global_id": 173,
+    "lecture_id": 2,
+    "lecture_name": "Clinical Biochemistry",
+    "question_id": 13,
+    "question": "A patient with impaired ventilation develops carbon dioxide retention. Which change is expected if other factors remain constant?",
+    "options": {
+      "A": "Increased hydrogen ion concentration and decreased pH",
+      "B": "Increased pH because carbon dioxide is alkaline",
+      "C": "Decreased hydrogen ion concentration",
+      "D": "Increased bicarbonate loss as the immediate primary event"
+    },
+    "page": 2,
+    "source": "Clinical Bio+chem final.pdf",
+    "correct_answer": "A",
+    "correct_text": "Increased hydrogen ion concentration and decreased pH"
+  },
+  {
+    "global_id": 174,
+    "lecture_id": 2,
+    "lecture_name": "Clinical Biochemistry",
+    "question_id": 14,
+    "question": "Why can the bicarbonate buffer system continue to help regulate blood pH more effectively than a closed buffer system?",
+    "options": {
+      "A": "It converts carbonic acid into a gas that can be exhaled.",
+      "B": "It permanently destroys all hydrogen ions.",
+      "C": "It removes all bicarbonate through the kidneys immediately.",
+      "D": "It prevents carbon dioxide from entering the blood."
+    },
+    "page": 2,
+    "source": "Clinical Bio+chem final.pdf",
+    "correct_answer": "A",
+    "correct_text": "It converts carbonic acid into a gas that can be exhaled."
+  },
+  {
+    "global_id": 175,
+    "lecture_id": 2,
+    "lecture_name": "Clinical Biochemistry",
+    "question_id": 15,
+    "question": "A patient has increased acid production following intense tissue hypoxia. Which physiological response provides the most immediate compensation for metabolic acidosis?",
+    "options": {
+      "A": "Increased ventilation, reducing arterial PCO₂",
+      "B": "Increased renal bicarbonate generation over several days",
+      "C": "Reduced ventilation to conserve carbon dioxide",
+      "D": "Increased gastric acid secretion"
+    },
+    "page": 2,
+    "source": "Clinical Bio+chem final.pdf",
+    "correct_answer": "A",
+    "correct_text": "Increased ventilation, reducing arterial PCO₂"
+  },
+  {
+    "global_id": 176,
+    "lecture_id": 2,
+    "lecture_name": "Clinical Biochemistry",
+    "question_id": 16,
+    "question": "Which statement best describes the role of the kidneys in acid–base regulation?",
+    "options": {
+      "A": "They reabsorb filtered bicarbonate and generate new bicarbonate while excreting acid.",
+      "B": "They regulate pH exclusively by exhaling carbon dioxide.",
+      "C": "They temporarily bind hydrogen ions but never excrete them.",
+      "D": "They compensate for every acid–base disorder within seconds."
+    },
+    "page": 2,
+    "source": "Clinical Bio+chem final.pdf",
+    "correct_answer": "A",
+    "correct_text": "They reabsorb filtered bicarbonate and generate new bicarbonate while excreting acid."
+  },
+  {
+    "global_id": 177,
+    "lecture_id": 2,
+    "lecture_name": "Clinical Biochemistry",
+    "question_id": 17,
+    "question": "A patient with diabetic ketoacidosis has pH 7.21 (low), HCO₃⁻ 11 mmol/L (low), and PCO₂ 25 mmHg (low). Which primary disorder best explains these results?",
+    "options": {
+      "A": "Metabolic acidosis",
+      "B": "Metabolic alkalosis",
+      "C": "Respiratory acidosis",
+      "D": "Respiratory alkalosis"
+    },
+    "page": 3,
+    "source": "Clinical Bio+chem final.pdf",
+    "correct_answer": "A",
+    "correct_text": "Metabolic acidosis"
+  },
+  {
+    "global_id": 178,
+    "lecture_id": 2,
+    "lecture_name": "Clinical Biochemistry",
+    "question_id": 18,
+    "question": "A patient has persistent vomiting. Results show pH 7.51 (elevated), HCO₃⁻ 34 mmol/L (elevated), and PCO₂ 46 mmHg (slightly elevated). What is the most likely primary disturbance?",
+    "options": {
+      "A": "Metabolic alkalosis",
+      "B": "Respiratory acidosis",
+      "C": "Respiratory alkalosis",
+      "D": "Metabolic acidosis"
+    },
+    "page": 3,
+    "source": "Clinical Bio+chem final.pdf",
+    "correct_answer": "A",
+    "correct_text": "Metabolic alkalosis"
+  },
+  {
+    "global_id": 179,
+    "lecture_id": 2,
+    "lecture_name": "Clinical Biochemistry",
+    "question_id": 19,
+    "question": "A patient receives excessive respiratory-depressant medication and develops pH 7.25 (low), PCO₂ 62 mmHg (elevated), and HCO₃⁻ 26 mmol/L (normal). Which disorder is most likely?",
+    "options": {
+      "A": "Acute respiratory acidosis",
+      "B": "Chronic respiratory alkalosis",
+      "C": "Metabolic acidosis",
+      "D": "Metabolic alkalosis"
+    },
+    "page": 3,
+    "source": "Clinical Bio+chem final.pdf",
+    "correct_answer": "A",
+    "correct_text": "Acute respiratory acidosis"
+  },
+  {
+    "global_id": 180,
+    "lecture_id": 2,
+    "lecture_name": "Clinical Biochemistry",
+    "question_id": 20,
+    "question": "A patient with marked anxiety is breathing rapidly. Arterial Blood Gas (ABG) shows pH 7.53 (elevated), PCO₂ 27 mmHg (low), and HCO₃⁻ 22 mmol/L (normal). Which interpretation is best?",
+    "options": {
+      "A": "Primary respiratory alkalosis",
+      "B": "Primary metabolic alkalosis",
+      "C": "Primary respiratory acidosis",
+      "D": "Primary metabolic acidosis"
+    },
+    "page": 3,
+    "source": "Clinical Bio+chem final.pdf",
+    "correct_answer": "A",
+    "correct_text": "Primary respiratory alkalosis"
+  },
+  {
+    "global_id": 181,
+    "lecture_id": 2,
+    "lecture_name": "Clinical Biochemistry",
+    "question_id": 21,
+    "question": "A patient has metabolic acidosis. Which change is expected as an appropriate respiratory compensatory response?",
+    "options": {
+      "A": "A decrease in PCO₂",
+      "B": "An increase in PCO₂",
+      "C": "A substantial increase in bicarbonate as the immediate respiratory response",
+      "D": "No change in ventilation"
+    },
+    "page": 3,
+    "source": "Clinical Bio+chem final.pdf",
+    "correct_answer": "A",
+    "correct_text": "A decrease in PCO₂"
+  },
+  {
+    "global_id": 182,
+    "lecture_id": 2,
+    "lecture_name": "Clinical Biochemistry",
+    "question_id": 22,
+    "question": "A patient with chronic obstructive pulmonary disease has chronic carbon dioxide retention. Why might their bicarbonate concentration be elevated?",
+    "options": {
+      "A": "The kidneys retain and generate bicarbonate during chronic respiratory acidosis.",
+      "B": "The lungs directly synthesize bicarbonate to compensate.",
+      "C": "Carbon dioxide retention always causes bicarbonate loss.",
+      "D": "Elevated bicarbonate proves the patient has metabolic alkalosis as the sole disorder."
+    },
+    "page": 3,
+    "source": "Clinical Bio+chem final.pdf",
+    "correct_answer": "A",
+    "correct_text": "The kidneys retain and generate bicarbonate during chronic respiratory acidosis."
+  },
+  {
+    "global_id": 183,
+    "lecture_id": 2,
+    "lecture_name": "Clinical Biochemistry",
+    "question_id": 23,
+    "question": "Which statement about compensation is most accurate?",
+    "options": {
+      "A": "Respiratory compensation is generally faster than renal compensation.",
+      "B": "Compensation always returns the underlying process to normal.",
+      "C": "Renal compensation is completed within seconds.",
+      "D": "Compensation necessarily causes the opposite acid–base disorder."
+    },
+    "page": 3,
+    "source": "Clinical Bio+chem final.pdf",
+    "correct_answer": "A",
+    "correct_text": "Respiratory compensation is generally faster than renal compensation."
+  },
+  {
+    "global_id": 184,
+    "lecture_id": 2,
+    "lecture_name": "Clinical Biochemistry",
+    "question_id": 24,
+    "question": "A patient with severe diarrhea has pH 7.30 (low) and decreased bicarbonate. Which mechanism most directly explains the metabolic component?",
+    "options": {
+      "A": "Loss of bicarbonate-rich intestinal fluid",
+      "B": "Excessive loss of gastric hydrochloric acid",
+      "C": "Primary retention of carbon dioxide",
+      "D": "Excessive carbon dioxide elimination as the initial cause"
+    },
+    "page": 3,
+    "source": "Clinical Bio+chem final.pdf",
+    "correct_answer": "A",
+    "correct_text": "Loss of bicarbonate-rich intestinal fluid"
+  },
+  {
+    "global_id": 185,
+    "lecture_id": 2,
+    "lecture_name": "Clinical Biochemistry",
+    "question_id": 25,
+    "question": "A patient with suspected acute viral hepatitis has ALT 1,250 U/L (elevated) and AST 980 U/L (elevated). Which interpretation best explains the purpose of measuring these enzymes?",
+    "options": {
+      "A": "They provide evidence of hepatocellular injury.",
+      "B": "They directly measure the liver's capacity to synthesize clotting factors.",
+      "C": "They specifically measure bile flow through the common bile duct.",
+      "D": "They directly quantify hepatic glycogen storage."
+    },
+    "page": 4,
+    "source": "Clinical Bio+chem final.pdf",
+    "correct_answer": "A",
+    "correct_text": "They provide evidence of hepatocellular injury."
+  },
+  {
+    "global_id": 186,
+    "lecture_id": 2,
+    "lecture_name": "Clinical Biochemistry",
+    "question_id": 26,
+    "question": "A patient has itching, dark urine, pale stools, increased ALP, and increased GGT. Which process should be investigated first?",
+    "options": {
+      "A": "Cholestasis or impaired bile flow",
+      "B": "Isolated reduction in albumin synthesis",
+      "C": "Increased muscle protein breakdown alone",
+      "D": "Reduced production of unconjugated bilirubin"
+    },
+    "page": 4,
+    "source": "Clinical Bio+chem final.pdf",
+    "correct_answer": "A",
+    "correct_text": "Cholestasis or impaired bile flow"
+  },
+  {
+    "global_id": 187,
+    "lecture_id": 2,
+    "lecture_name": "Clinical Biochemistry",
+    "question_id": 27,
+    "question": "A patient with suspected acute liver failure has a prolonged PT/INR. Why is this result clinically important?",
+    "options": {
+      "A": "It may indicate impaired synthesis of coagulation factors and can change relatively quickly.",
+      "B": "It indicates increased production of clotting factors.",
+      "C": "It specifically identifies viral hepatitis.",
+      "D": "It measures the degree of bile pigment formation."
+    },
+    "page": 4,
+    "source": "Clinical Bio+chem final.pdf",
+    "correct_answer": "A",
+    "correct_text": "It may indicate impaired synthesis of coagulation factors and can change relatively quickly."
+  },
+  {
+    "global_id": 188,
+    "lecture_id": 2,
+    "lecture_name": "Clinical Biochemistry",
+    "question_id": 28,
+    "question": "A patient with chronic liver disease has a low serum albumin concentration. What is the most appropriate interpretation?",
+    "options": {
+      "A": "It may indicate reduced hepatic synthesis, but other causes must be considered.",
+      "B": "It confirms acute hepatocyte necrosis.",
+      "C": "It proves extrahepatic biliary obstruction.",
+      "D": "It directly measures the rate of bilirubin conjugation."
+    },
+    "page": 4,
+    "source": "Clinical Bio+chem final.pdf",
+    "correct_answer": "A",
+    "correct_text": "It may indicate reduced hepatic synthesis, but other causes must be considered."
+  },
+  {
+    "global_id": 189,
+    "lecture_id": 2,
+    "lecture_name": "Clinical Biochemistry",
+    "question_id": 29,
+    "question": "A patient has increased unconjugated bilirubin, normal ALT and ALP, and evidence of increased red-cell destruction. Which mechanism best explains the bilirubin elevation?",
+    "options": {
+      "A": "Excessive bilirubin production from heme breakdown exceeds the liver's ability to process it.",
+      "B": "Complete obstruction of the common bile duct",
+      "C": "Selective failure of albumin synthesis",
+      "D": "Reduced production of bilirubin from heme"
+    },
+    "page": 4,
+    "source": "Clinical Bio+chem final.pdf",
+    "correct_answer": "A",
+    "correct_text": "Excessive bilirubin production from heme breakdown exceeds the liver's ability to process it."
+  },
+  {
+    "global_id": 190,
+    "lecture_id": 2,
+    "lecture_name": "Clinical Biochemistry",
+    "question_id": 30,
+    "question": "A patient with obstructive jaundice has increased conjugated bilirubin. Which property explains why conjugated bilirubin may appear in urine?",
+    "options": {
+      "A": "It is water-soluble and can be excreted through the kidneys.",
+      "B": "It is highly fat-soluble and cannot circulate in blood.",
+      "C": "It is converted directly into albumin.",
+      "D": "It is identical to stercobilin."
+    },
+    "page": 4,
+    "source": "Clinical Bio+chem final.pdf",
+    "correct_answer": "A",
+    "correct_text": "It is water-soluble and can be excreted through the kidneys."
+  },
+  {
+    "global_id": 191,
+    "lecture_id": 2,
+    "lecture_name": "Clinical Biochemistry",
+    "question_id": 31,
+    "question": "A patient with extrahepatic biliary obstruction develops pale stools. Which explanation is most appropriate?",
+    "options": {
+      "A": "Less bilirubin reaches the intestine, reducing formation of stool pigments.",
+      "B": "Excess stercobilin is being formed in the intestine.",
+      "C": "Increased albumin synthesis bleaches the stool.",
+      "D": "Unconjugated bilirubin is directly excreted in the stool without processing."
+    },
+    "page": 4,
+    "source": "Clinical Bio+chem final.pdf",
+    "correct_answer": "A",
+    "correct_text": "Less bilirubin reaches the intestine, reducing formation of stool pigments."
+  },
+  {
+    "global_id": 192,
+    "lecture_id": 2,
+    "lecture_name": "Clinical Biochemistry",
+    "question_id": 32,
+    "question": "A patient has increased ALP but normal GGT and no bilirubin elevation. Which additional consideration is particularly important before attributing the abnormality to the liver?",
+    "options": {
+      "A": "Bone disease or another non-hepatic source of ALP",
+      "B": "Acute hepatic synthetic failure as the only possible explanation",
+      "C": "Complete biliary obstruction as a confirmed diagnosis",
+      "D": "Increased unconjugated bilirubin production as the sole explanation"
+    },
+    "page": 5,
+    "source": "Clinical Bio+chem final.pdf",
+    "correct_answer": "A",
+    "correct_text": "Bone disease or another non-hepatic source of ALP"
+  },
+  {
+    "global_id": 193,
+    "lecture_id": 2,
+    "lecture_name": "Clinical Biochemistry",
+    "question_id": 33,
+    "question": "A patient with suspected drug-induced liver injury has a large increase in ALT and AST shortly after a medication overdose. Bilirubin rises later. Which interpretation best fits this sequence?",
+    "options": {
+      "A": "Early hepatocellular injury followed by impaired bilirubin handling",
+      "B": "An isolated primary defect in albumin synthesis",
+      "C": "Early cholestasis with no hepatocellular involvement",
+      "D": "Normal physiological adaptation to medication"
+    },
+    "page": 5,
+    "source": "Clinical Bio+chem final.pdf",
+    "correct_answer": "A",
+    "correct_text": "Early hepatocellular injury followed by impaired bilirubin handling"
+  },
+  {
+    "global_id": 194,
+    "lecture_id": 2,
+    "lecture_name": "Clinical Biochemistry",
+    "question_id": 34,
+    "question": "A patient with suspected hepatocellular carcinoma has an elevated alpha-fetoprotein (AFP). What is the most appropriate interpretation?",
+    "options": {
+      "A": "AFP can support evaluation in the appropriate context, but it is not sufficiently specific to diagnose cancer by itself.",
+      "B": "AFP elevation alone definitively establishes the diagnosis.",
+      "C": "AFP directly measures the rate of bile secretion.",
+      "D": "A normal AFP excludes hepatocellular carcinoma."
+    },
+    "page": 5,
+    "source": "Clinical Bio+chem final.pdf",
+    "correct_answer": "A",
+    "correct_text": "AFP can support evaluation in the appropriate context, but it is not sufficiently specific to diagnose cancer by itself."
+  },
+  {
+    "global_id": 195,
+    "lecture_id": 2,
+    "lecture_name": "Clinical Biochemistry",
+    "question_id": 35,
+    "question": "A patient has an increased ALP concentration, but it is unclear whether the source is the liver or bone. Which additional test is particularly useful?",
+    "options": {
+      "A": "GGT",
+      "B": "Amylase",
+      "C": "CK-MM",
+      "D": "PSA"
+    },
+    "page": 5,
+    "source": "Clinical Bio+chem final.pdf",
+    "correct_answer": "A",
+    "correct_text": "GGT"
+  },
+  {
+    "global_id": 196,
+    "lecture_id": 2,
+    "lecture_name": "Clinical Biochemistry",
+    "question_id": 36,
+    "question": "A patient has an elevated LDH concentration during an investigation for suspected liver disease. Which conclusion is most appropriate?",
+    "options": {
+      "A": "LDH is nonspecific, so hemolysis, malignancy, and other tissue injuries must also be considered.",
+      "B": "LDH elevation proves that liver injury is the only abnormality.",
+      "C": "LDH is produced exclusively by hepatocytes.",
+      "D": "LDH elevation confirms a pancreatic disorder."
+    },
+    "page": 5,
+    "source": "Clinical Bio+chem final.pdf",
+    "correct_answer": "A",
+    "correct_text": "LDH is nonspecific, so hemolysis, malignancy, and other tissue injuries must also be considered."
+  },
+  {
+    "global_id": 197,
+    "lecture_id": 2,
+    "lecture_name": "Clinical Biochemistry",
+    "question_id": 37,
+    "question": "A patient presents with severe epigastric pain radiating to the back, raising suspicion of acute pancreatitis. Both amylase and lipase are available. Which statement best supports the selection of lipase?",
+    "options": {
+      "A": "Lipase is more specific for pancreatic injury and remains elevated longer than amylase.",
+      "B": "Lipase is primarily a marker of bone formation.",
+      "C": "Amylase is found exclusively in the pancreas, whereas lipase is found in the salivary glands.",
+      "D": "Lipase is a specific marker of myocardial injury."
+    },
+    "page": 5,
+    "source": "Clinical Bio+chem final.pdf",
+    "correct_answer": "A",
+    "correct_text": "Lipase is more specific for pancreatic injury and remains elevated longer than amylase."
+  },
+  {
+    "global_id": 198,
+    "lecture_id": 2,
+    "lecture_name": "Clinical Biochemistry",
+    "question_id": 38,
+    "question": "A patient develops severe muscle pain and dark urine after strenuous exercise. Laboratory results show a markedly increased CK-MM concentration. Which condition is most consistent with this result?",
+    "options": {
+      "A": "Rhabdomyolysis",
+      "B": "Cholestasis",
+      "C": "Acute pancreatitis",
+      "D": "Prostate enlargement"
+    },
+    "page": 5,
+    "source": "Clinical Bio+chem final.pdf",
+    "correct_answer": "A",
+    "correct_text": "Rhabdomyolysis"
+  },
+  {
+    "global_id": 199,
+    "lecture_id": 2,
+    "lecture_name": "Clinical Biochemistry",
+    "question_id": 39,
+    "question": "A patient has elevated AST after intense physical exercise. ALT is not substantially increased, and CK-MM is markedly elevated. Which explanation is most likely?",
+    "options": {
+      "A": "The pattern supports skeletal muscle injury as a possible source of the elevated AST.",
+      "B": "AST elevation must originate exclusively from the liver.",
+      "C": "The result proves that the patient has biliary obstruction.",
+      "D": "The findings confirm acute pancreatitis."
+    },
+    "page": 6,
+    "source": "Clinical Bio+chem final.pdf",
+    "correct_answer": "A",
+    "correct_text": "The pattern supports skeletal muscle injury as a possible source of the elevated AST."
+  },
+  {
+    "global_id": 200,
+    "lecture_id": 2,
+    "lecture_name": "Clinical Biochemistry",
+    "question_id": 40,
+    "question": "A patient is being investigated for a disorder involving increased bone breakdown. Which enzyme is more specific for osteoclast activity?",
+    "options": {
+      "A": "TRAP",
+      "B": "ALT",
+      "C": "CK-MB",
+      "D": "Lipase"
+    },
+    "page": 6,
+    "source": "Clinical Bio+chem final.pdf",
+    "correct_answer": "A",
+    "correct_text": "TRAP"
+  },
+  {
+    "global_id": 201,
+    "lecture_id": 3,
+    "lecture_name": "Clinical Biology",
+    "question_id": 1,
+    "question": "A 4-year-old child presents with recurrent episodes of itchy, dry, inflamed skin. The symptoms improve with treatment but return periodically. Which condition best explains?",
+    "options": {
+      "A": "Atopic dermatitis",
+      "B": "Acute bacterial skin infection",
+      "C": "A single episode of allergic contact dermatitis",
+      "D": "A non-inflammatory pigmentary disorder"
+    },
+    "page": 6,
+    "source": "Clinical Bio+chem final.pdf",
+    "correct_answer": "A",
+    "correct_text": "Atopic dermatitis"
+  },
+  {
+    "global_id": 202,
+    "lecture_id": 3,
+    "lecture_name": "Clinical Biology",
+    "question_id": 2,
+    "question": "Which combination represents the classic atopic triad?",
+    "options": {
+      "A": "Eczema, asthma, and allergic rhinitis",
+      "B": "Psoriasis, asthma, and urticaria",
+      "C": "Eczema, diabetes mellitus, and allergic rhinitis",
+      "D": "Asthma, bacterial infection, and psoriasis"
+    },
+    "page": 6,
+    "source": "Clinical Bio+chem final.pdf",
+    "correct_answer": "A",
+    "correct_text": "Eczema, asthma, and allergic rhinitis"
+  },
+  {
+    "global_id": 203,
+    "lecture_id": 3,
+    "lecture_name": "Clinical Biology",
+    "question_id": 3,
+    "question": "Which finding is most characteristic of adolescent or adult Atopic Dermatitis?",
+    "options": {
+      "A": "Thick, dry, lichenified plaques with prominent skin markings",
+      "B": "Exclusively wet lesions on the cheeks",
+      "C": "A complete absence of itching",
+      "D": "Lesions restricted to the nappy area"
+    },
+    "page": 6,
+    "source": "Clinical Bio+chem final.pdf",
+    "correct_answer": "A",
+    "correct_text": "Thick, dry, lichenified plaques with prominent skin markings"
+  },
+  {
+    "global_id": 204,
+    "lecture_id": 3,
+    "lecture_name": "Clinical Biology",
+    "question_id": 4,
+    "question": "A patient with AD has a mutation affecting the filaggrin gene. Which consequence is most directly associated with this abnormality?",
+    "options": {
+      "A": "Impaired skin barrier function and reduced natural moisturizing factor",
+      "B": "Increased production of natural moisturizing factor",
+      "C": "Improved protection against environmental allergens",
+      "D": "Complete suppression of inflammatory cytokines"
+    },
+    "page": 6,
+    "source": "Clinical Bio+chem final.pdf",
+    "correct_answer": "A",
+    "correct_text": "Impaired skin barrier function and reduced natural moisturizing factor"
+  },
+  {
+    "global_id": 205,
+    "lecture_id": 3,
+    "lecture_name": "Clinical Biology",
+    "question_id": 5,
+    "question": "Why does a defective epidermal barrier contribute to severe dryness in Atopic Dermatitis?",
+    "options": {
+      "A": "It increases transepidermal water loss.",
+      "B": "It prevents all water movement through the epidermis.",
+      "C": "It increases the production of skin lipids in every patient.",
+      "D": "It blocks the entry of environmental irritants."
+    },
+    "page": 6,
+    "source": "Clinical Bio+chem final.pdf",
+    "correct_answer": "A",
+    "correct_text": "It increases transepidermal water loss."
+  },
+  {
+    "global_id": 206,
+    "lecture_id": 3,
+    "lecture_name": "Clinical Biology",
+    "question_id": 6,
+    "question": "A patient with AD experiences severe itching that triggers repeated scratching. Which cytokine is identified as a major initiator of pruritus?",
+    "options": {
+      "A": "IL-31",
+      "B": "Insulin",
+      "C": "Erythropoietin",
+      "D": "Albumin"
+    },
+    "page": 7,
+    "source": "Clinical Bio+chem final.pdf",
+    "correct_answer": "A",
+    "correct_text": "IL-31"
+  },
+  {
+    "global_id": 207,
+    "lecture_id": 3,
+    "lecture_name": "Clinical Biology",
+    "question_id": 7,
+    "question": "Which sequence correctly describes the itch–scratch cycle in Atopic Dermatitis?",
+    "options": {
+      "A": "IL-31-mediated itch → scratching → keratinocyte damage → increased alarmin release → more inflammation and itch",
+      "B": "Scratching → stronger barrier → reduced inflammation → increased itching",
+      "C": "Reduced water loss → scratching → complete healing → recurrent dryness",
+      "D": "Moisturization → keratinocyte injury → increased infection in every patient"
+    },
+    "page": 7,
+    "source": "Clinical Bio+chem final.pdf",
+    "correct_answer": "A",
+    "correct_text": "IL-31-mediated itch → scratching → keratinocyte damage → increased alarmin release → more inflammation and itch"
+  },
+  {
+    "global_id": 208,
+    "lecture_id": 3,
+    "lecture_name": "Clinical Biology",
+    "question_id": 8,
+    "question": "Which combination contains only environmental or external triggers?",
+    "options": {
+      "A": "Dust mites, sweat, dry winter air, and Staphylococcus aureus",
+      "B": "Filaggrin mutation, inherited gene variation, and genetic predisposition",
+      "C": "Reduced NMF, increased TEWL, and defective filaggrin function",
+      "D": "Lichenification, excoriation, and fissure formation"
+    },
+    "page": 7,
+    "source": "Clinical Bio+chem final.pdf",
+    "correct_answer": "A",
+    "correct_text": "Dust mites, sweat, dry winter air, and Staphylococcus aureus"
+  },
+  {
+    "global_id": 209,
+    "lecture_id": 3,
+    "lecture_name": "Clinical Biology",
+    "question_id": 9,
+    "question": "A patient has thickened, leathery skin with exaggerated skin lines following months of repeated scratching. What is the correct term for this secondary lesion?",
+    "options": {
+      "A": "Lichenification",
+      "B": "Vesicle",
+      "C": "Excoriation",
+      "D": "Erythema"
+    },
+    "page": 7,
+    "source": "Clinical Bio+chem final.pdf",
+    "correct_answer": "A",
+    "correct_text": "Lichenification"
+  },
+  {
+    "global_id": 210,
+    "lecture_id": 3,
+    "lecture_name": "Clinical Biology",
+    "question_id": 10,
+    "question": "Which approach is most appropriate for diagnosing Atopic Dermatitis?",
+    "options": {
+      "A": "Combine the patient's history with a physical examination and clinical criteria",
+      "B": "Rely exclusively on a serum IgE concentration",
+      "C": "Use a skin biopsy as the only definitive test",
+      "D": "Diagnose the condition from a single liver enzyme measurement"
+    },
+    "page": 7,
+    "source": "Clinical Bio+chem final.pdf",
+    "correct_answer": "A",
+    "correct_text": "Combine the patient's history with a physical examination and clinical criteria"
+  },
+  {
+    "global_id": 211,
+    "lecture_id": 3,
+    "lecture_name": "Clinical Biology",
+    "question_id": 1,
+    "question": "What is the main function of hemostasis?",
+    "options": {
+      "A": "Produce red blood cells",
+      "B": "Stop blood loss after blood vessel injury",
+      "C": "Destroy all blood clots",
+      "D": "Increase blood pressure"
+    },
+    "page": 1,
+    "source": "MCQ kru Mona.pdf",
+    "lesson": "Disorder of Hemostasis",
+    "correct_answer": "B",
+    "correct_text": "Stop blood loss after blood vessel injury"
+  },
+  {
+    "global_id": 212,
+    "lecture_id": 3,
+    "lecture_name": "Clinical Biology",
+    "question_id": 2,
+    "question": "Which stage of hemostasis immediately narrows an injured blood vessel to reduce blood loss?",
+    "options": {
+      "A": "Primary hemostasis",
+      "B": "Secondary hemostasis",
+      "C": "Vasoconstriction",
+      "D": "Fibrinolysis"
+    },
+    "page": 1,
+    "source": "MCQ kru Mona.pdf",
+    "lesson": "Disorder of Hemostasis",
+    "correct_answer": "C",
+    "correct_text": "Vasoconstriction"
+  },
+  {
+    "global_id": 213,
+    "lecture_id": 3,
+    "lecture_name": "Clinical Biology",
+    "question_id": 3,
+    "question": "Which substance is released by damaged endothelial cells and causes vasoconstriction?",
+    "options": {
+      "A": "Endothelin",
+      "B": "Plasmin",
+      "C": "Fibrinogen",
+      "D": "Albumin"
+    },
+    "page": 1,
+    "source": "MCQ kru Mona.pdf",
+    "lesson": "Disorder of Hemostasis",
+    "correct_answer": "A",
+    "correct_text": "Endothelin"
+  },
+  {
+    "global_id": 214,
+    "lecture_id": 3,
+    "lecture_name": "Clinical Biology",
+    "question_id": 4,
+    "question": "What is the main role of platelets in primary hemostasis?",
+    "options": {
+      "A": "Dissolve fibrin clots",
+      "B": "Produce red blood cells",
+      "C": "Form a temporary platelet plug",
+      "D": "Prevent all coagulation"
+    },
+    "page": 1,
+    "source": "MCQ kru Mona.pdf",
+    "lesson": "Disorder of Hemostasis",
+    "correct_answer": "C",
+    "correct_text": "Form a temporary platelet plug"
+  },
+  {
+    "global_id": 215,
+    "lecture_id": 3,
+    "lecture_name": "Clinical Biology",
+    "question_id": 5,
+    "question": "Which protein helps platelets adhere to exposed collagen at an injured vessel?",
+    "options": {
+      "A": "Albumin",
+      "B": "von Willebrand factor (vWF)",
+      "C": "Plasmin",
+      "D": "Hemoglobin"
+    },
+    "page": 1,
+    "source": "MCQ kru Mona.pdf",
+    "lesson": "Disorder of Hemostasis",
+    "correct_answer": "B",
+    "correct_text": "von Willebrand factor (vWF)"
+  },
+  {
+    "global_id": 216,
+    "lecture_id": 3,
+    "lecture_name": "Clinical Biology",
+    "question_id": 6,
+    "question": "Which substances are released by activated platelets to promote platelet activation and aggregation?",
+    "options": {
+      "A": "ADP and thromboxane A₂",
+      "B": "Insulin and glucagon",
+      "C": "Albumin and globulin",
+      "D": "Plasmin and plasminogen"
+    },
+    "page": 2,
+    "source": "MCQ kru Mona.pdf",
+    "lesson": "Disorder of Hemostasis",
+    "correct_answer": "A",
+    "correct_text": "ADP and thromboxane A₂"
+  },
+  {
+    "global_id": 217,
+    "lecture_id": 3,
+    "lecture_name": "Clinical Biology",
+    "question_id": 7,
+    "question": "What is the main goal of secondary hemostasis?",
+    "options": {
+      "A": "Destroy platelets",
+      "B": "Narrow blood vessels permanently",
+      "C": "Produce a strong fibrin clot",
+      "D": "Break down fibrin"
+    },
+    "page": 2,
+    "source": "MCQ kru Mona.pdf",
+    "lesson": "Disorder of Hemostasis",
+    "correct_answer": "C",
+    "correct_text": "Produce a strong fibrin clot"
+  },
+  {
+    "global_id": 218,
+    "lecture_id": 3,
+    "lecture_name": "Clinical Biology",
+    "question_id": 8,
+    "question": "Which enzyme converts fibrinogen into fibrin?",
+    "options": {
+      "A": "Plasmin",
+      "B": "Thrombin",
+      "C": "Albumin",
+      "D": "Amylase"
+    },
+    "page": 2,
+    "source": "MCQ kru Mona.pdf",
+    "lesson": "Disorder of Hemostasis",
+    "correct_answer": "B",
+    "correct_text": "Thrombin"
+  },
+  {
+    "global_id": 219,
+    "lecture_id": 3,
+    "lecture_name": "Clinical Biology",
+    "question_id": 9,
+    "question": "Which coagulation pathway is primarily responsible for initiating the coagulation cascade?",
+    "options": {
+      "A": "Extrinsic pathway",
+      "B": "Intrinsic pathway",
+      "C": "Fibrinolytic pathway",
+      "D": "Platelet pathway"
+    },
+    "page": 2,
+    "source": "MCQ kru Mona.pdf",
+    "lesson": "Disorder of Hemostasis",
+    "correct_answer": "A",
+    "correct_text": "Extrinsic pathway"
+  },
+  {
+    "global_id": 220,
+    "lecture_id": 3,
+    "lecture_name": "Clinical Biology",
+    "question_id": 10,
+    "question": "Which coagulation pathway is primarily involved in amplification of the coagulation cascade?",
+    "options": {
+      "A": "Extrinsic pathway",
+      "B": "Intrinsic pathway",
+      "C": "Fibrinolytic pathway",
+      "D": "Complement pathway"
+    },
+    "page": 3,
+    "source": "MCQ kru Mona.pdf",
+    "lesson": "Disorder of Hemostasis",
+    "correct_answer": "B",
+    "correct_text": "Intrinsic pathway"
+  },
+  {
+    "global_id": 221,
+    "lecture_id": 3,
+    "lecture_name": "Clinical Biology",
+    "question_id": 11,
+    "question": "What is the main function of fibrin in a blood clot?",
+    "options": {
+      "A": "Break down platelets",
+      "B": "Stabilize the platelet plug",
+      "C": "Reduce platelet production",
+      "D": "Dissolve the clot"
+    },
+    "page": 3,
+    "source": "MCQ kru Mona.pdf",
+    "lesson": "Disorder of Hemostasis",
+    "correct_answer": "B",
+    "correct_text": "Stabilize the platelet plug"
+  },
+  {
+    "global_id": 222,
+    "lecture_id": 3,
+    "lecture_name": "Clinical Biology",
+    "question_id": 12,
+    "question": "Which enzyme primarily breaks down fibrin during fibrinolysis?",
+    "options": {
+      "A": "Thrombin",
+      "B": "Factor VIII",
+      "C": "Plasmin",
+      "D": "Fibrinogen"
+    },
+    "page": 3,
+    "source": "MCQ kru Mona.pdf",
+    "lesson": "Disorder of Hemostasis",
+    "correct_answer": "C",
+    "correct_text": "Plasmin"
+  },
+  {
+    "global_id": 223,
+    "lecture_id": 3,
+    "lecture_name": "Clinical Biology",
+    "question_id": 13,
+    "question": "Which substance converts plasminogen into plasmin?",
+    "options": {
+      "A": "Tissue plasminogen activator (tPA)",
+      "B": "Hemoglobin",
+      "C": "Albumin",
+      "D": "Factor VIII"
+    },
+    "page": 3,
+    "source": "MCQ kru Mona.pdf",
+    "lesson": "Disorder of Hemostasis",
+    "correct_answer": "A",
+    "correct_text": "Tissue plasminogen activator (tPA)"
+  },
+  {
+    "global_id": 224,
+    "lecture_id": 3,
+    "lecture_name": "Clinical Biology",
+    "question_id": 14,
+    "question": "What is the main purpose of fibrinolysis?",
+    "options": {
+      "A": "Form a platelet plug",
+      "B": "Narrow the injured vessel",
+      "C": "Remove the clot after vessel repair",
+      "D": "Produce more fibrin"
+    },
+    "page": 4,
+    "source": "MCQ kru Mona.pdf",
+    "lesson": "Disorder of Hemostasis",
+    "correct_answer": "C",
+    "correct_text": "Remove the clot after vessel repair"
+  },
+  {
+    "global_id": 225,
+    "lecture_id": 3,
+    "lecture_name": "Clinical Biology",
+    "question_id": 15,
+    "question": "Hemostatic disorders can be classified by which of the following?",
+    "options": {
+      "A": "Origin and affected hemostatic component",
+      "B": "Blood group only",
+      "C": "Body temperature only",
+      "D": "Age and height only"
+    },
+    "page": 4,
+    "source": "MCQ kru Mona.pdf",
+    "lesson": "Disorder of Hemostasis",
+    "correct_answer": "A",
+    "correct_text": "Origin and affected hemostatic component"
+  },
+  {
+    "global_id": 226,
+    "lecture_id": 3,
+    "lecture_name": "Clinical Biology",
+    "question_id": 16,
+    "question": "Which of the following is an inherited hemostatic disorder?",
+    "options": {
+      "A": "Vitamin K deficiency",
+      "B": "Liver disease",
+      "C": "Hemophilia",
+      "D": "Acquired disseminated intravascular coagulation"
+    },
+    "page": 4,
+    "source": "MCQ kru Mona.pdf",
+    "lesson": "Disorder of Hemostasis",
+    "correct_answer": "C",
+    "correct_text": "Hemophilia"
+  },
+  {
+    "global_id": 227,
+    "lecture_id": 3,
+    "lecture_name": "Clinical Biology",
+    "question_id": 17,
+    "question": "Which condition is an example of a disorder affecting multiple components of hemostasis?",
+    "options": {
+      "A": "Hemophilia A",
+      "B": "Disseminated intravascular coagulation (DIC)",
+      "C": "Glanzmann thrombasthenia",
+      "D": "A simple vessel injury"
+    },
+    "page": 5,
+    "source": "MCQ kru Mona.pdf",
+    "lesson": "Disorder of Hemostasis",
+    "correct_answer": "B",
+    "correct_text": "Disseminated intravascular coagulation (DIC)"
+  },
+  {
+    "global_id": 228,
+    "lecture_id": 3,
+    "lecture_name": "Clinical Biology",
+    "question_id": 18,
+    "question": "Which laboratory test assesses platelet function and vascular integrity by measuring the time needed for bleeding to stop?",
+    "options": {
+      "A": "Bleeding time",
+      "B": "Prothrombin time (PT)",
+      "C": "Thrombin time (TT)",
+      "D": "Blood glucose test"
+    },
+    "page": 5,
+    "source": "MCQ kru Mona.pdf",
+    "lesson": "Disorder of Hemostasis",
+    "correct_answer": "A",
+    "correct_text": "Bleeding time"
+  },
+  {
+    "global_id": 229,
+    "lecture_id": 3,
+    "lecture_name": "Clinical Biology",
+    "question_id": 19,
+    "question": "Which laboratory test is used to evaluate the intrinsic and common coagulation pathways?",
+    "options": {
+      "A": "Bleeding time",
+      "B": "Activated partial thromboplastin time (aPTT)",
+      "C": "Blood glucose test",
+      "D": "Hemoglobin concentration"
+    },
+    "page": 5,
+    "source": "MCQ kru Mona.pdf",
+    "lesson": "Disorder of Hemostasis",
+    "correct_answer": "B",
+    "correct_text": "Activated partial thromboplastin time (aPTT)"
+  },
+  {
+    "global_id": 230,
+    "lecture_id": 3,
+    "lecture_name": "Clinical Biology",
+    "question_id": 20,
+    "question": "What does an increased D-dimer level generally indicate?",
+    "options": {
+      "A": "No fibrin breakdown has occurred",
+      "B": "Breakdown of cross-linked fibrin has occurred",
+      "C": "Increased red blood cell production",
+      "D": "Normal platelet adhesion only"
+    },
+    "page": 5,
+    "source": "MCQ kru Mona.pdf",
+    "lesson": "Disorder of Hemostasis",
+    "correct_answer": "B",
+    "correct_text": "Breakdown of cross-linked fibrin has occurred"
+  },
+  {
+    "global_id": 231,
+    "lecture_id": 3,
+    "lecture_name": "Clinical Biology",
+    "question_id": 21,
+    "question": "Which clotting factor is deficient in Hemophilia A?",
+    "options": {
+      "A": "Factor V",
+      "B": "Factor VIII",
+      "C": "Factor IX",
+      "D": "Factor X"
+    },
+    "page": 6,
+    "source": "MCQ kru Mona.pdf",
+    "lesson": "Coagulation Disorders",
+    "correct_answer": "B",
+    "correct_text": "Factor VIII"
+  },
+  {
+    "global_id": 232,
+    "lecture_id": 3,
+    "lecture_name": "Clinical Biology",
+    "question_id": 22,
+    "question": "Which clotting factor is deficient in Hemophilia B?",
+    "options": {
+      "A": "Factor VII",
+      "B": "Factor VIII",
+      "C": "Factor IX",
+      "D": "Factor XII"
+    },
+    "page": 6,
+    "source": "MCQ kru Mona.pdf",
+    "lesson": "Coagulation Disorders",
+    "correct_answer": "C",
+    "correct_text": "Factor IX"
+  },
+  {
+    "global_id": 233,
+    "lecture_id": 3,
+    "lecture_name": "Clinical Biology",
+    "question_id": 23,
+    "question": "What is the inheritance pattern of Hemophilia A?",
+    "options": {
+      "A": "Autosomal dominant",
+      "B": "X-linked recessive",
+      "C": "Autosomal recessive",
+      "D": "Mitochondrial inheritance"
+    },
+    "page": 6,
+    "source": "MCQ kru Mona.pdf",
+    "lesson": "Coagulation Disorders",
+    "correct_answer": "B",
+    "correct_text": "X-linked recessive"
+  },
+  {
+    "global_id": 234,
+    "lecture_id": 3,
+    "lecture_name": "Clinical Biology",
+    "question_id": 24,
+    "question": "Which group is mainly affected by Hemophilia A?",
+    "options": {
+      "A": "Males",
+      "B": "Females only",
+      "C": "Newborn females only",
+      "D": "All individuals equally"
+    },
+    "page": 6,
+    "source": "MCQ kru Mona.pdf",
+    "lesson": "Coagulation Disorders",
+    "correct_answer": "A",
+    "correct_text": "Males"
+  },
+  {
+    "global_id": 235,
+    "lecture_id": 3,
+    "lecture_name": "Clinical Biology",
+    "question_id": 25,
+    "question": "What is the main treatment for Hemophilia A?",
+    "options": {
+      "A": "Factor IX replacement",
+      "B": "Factor VIII replacement",
+      "C": "Vitamin C supplementation",
+      "D": "Platelet destruction"
+    },
+    "page": 7,
+    "source": "MCQ kru Mona.pdf",
+    "lesson": "Coagulation Disorders",
+    "correct_answer": "B",
+    "correct_text": "Factor VIII replacement"
+  },
+  {
+    "global_id": 236,
+    "lecture_id": 3,
+    "lecture_name": "Clinical Biology",
+    "question_id": 26,
+    "question": "What is the main treatment for Hemophilia B?",
+    "options": {
+      "A": "Factor VIII replacement",
+      "B": "Factor IX replacement",
+      "C": "Insulin therapy",
+      "D": "Antibiotic therapy"
+    },
+    "page": 7,
+    "source": "MCQ kru Mona.pdf",
+    "lesson": "Coagulation Disorders",
+    "correct_answer": "B",
+    "correct_text": "Factor IX replacement"
+  },
+  {
+    "global_id": 237,
+    "lecture_id": 3,
+    "lecture_name": "Clinical Biology",
+    "question_id": 27,
+    "question": "Which laboratory test is commonly prolonged in Hemophilia A and Hemophilia B?",
+    "options": {
+      "A": "Bleeding time only",
+      "B": "Prothrombin time (PT)",
+      "C": "Activated partial thromboplastin time (aPTT)",
+      "D": "Blood glucose test"
+    },
+    "page": 7,
+    "source": "MCQ kru Mona.pdf",
+    "lesson": "Coagulation Disorders",
+    "correct_answer": "C",
+    "correct_text": "Activated partial thromboplastin time (aPTT)"
+  },
+  {
+    "global_id": 238,
+    "lecture_id": 3,
+    "lecture_name": "Clinical Biology",
+    "question_id": 28,
+    "question": "Which test evaluates the extrinsic and common coagulation pathways?",
+    "options": {
+      "A": "Prothrombin time (PT)",
+      "B": "Bleeding time",
+      "C": "Platelet count only",
+      "D": "Hemoglobin test"
+    },
+    "page": 7,
+    "source": "MCQ kru Mona.pdf",
+    "lesson": "Coagulation Disorders",
+    "correct_answer": "A",
+    "correct_text": "Prothrombin time (PT)"
+  },
+  {
+    "global_id": 239,
+    "lecture_id": 3,
+    "lecture_name": "Clinical Biology",
+    "question_id": 29,
+    "question": "What is the normal PT range stated in the lesson?",
+    "options": {
+      "A": "3–10 minutes",
+      "B": "10–14 seconds",
+      "C": "30–40 seconds",
+      "D": "60–90 seconds"
+    },
+    "page": 8,
+    "source": "MCQ kru Mona.pdf",
+    "lesson": "Coagulation Disorders",
+    "correct_answer": "B",
+    "correct_text": "10–14 seconds"
+  },
+  {
+    "global_id": 240,
+    "lecture_id": 3,
+    "lecture_name": "Clinical Biology",
+    "question_id": 30,
+    "question": "What is the normal aPTT range stated in the lesson?",
+    "options": {
+      "A": "3–10 seconds",
+      "B": "10–14 seconds",
+      "C": "30–40 seconds",
+      "D": "60–90 seconds"
+    },
+    "page": 8,
+    "source": "MCQ kru Mona.pdf",
+    "lesson": "Coagulation Disorders",
+    "correct_answer": "C",
+    "correct_text": "30–40 seconds"
+  },
+  {
+    "global_id": 241,
+    "lecture_id": 3,
+    "lecture_name": "Clinical Biology",
+    "question_id": 31,
+    "question": "What does thrombin time (TT) measure?",
+    "options": {
+      "A": "The time required for platelets to adhere",
+      "B": "The time required for thrombin to convert fibrinogen into fibrin",
+      "C": "The number of platelets in blood",
+      "D": "The time required to produce red blood cells"
+    },
+    "page": 8,
+    "source": "MCQ kru Mona.pdf",
+    "lesson": "Coagulation Disorders",
+    "correct_answer": "B",
+    "correct_text": "The time required for thrombin to convert fibrinogen into fibrin"
+  },
+  {
+    "global_id": 242,
+    "lecture_id": 3,
+    "lecture_name": "Clinical Biology",
+    "question_id": 32,
+    "question": "Which of the following is an acquired coagulation disorder?",
+    "options": {
+      "A": "Hemophilia A",
+      "B": "Hemophilia B",
+      "C": "Vitamin K deficiency",
+      "D": "Inherited von Willebrand disease"
+    },
+    "page": 9,
+    "source": "MCQ kru Mona.pdf",
+    "lesson": "Coagulation Disorders",
+    "correct_answer": "C",
+    "correct_text": "Vitamin K deficiency"
+  },
+  {
+    "global_id": 243,
+    "lecture_id": 3,
+    "lecture_name": "Clinical Biology",
+    "question_id": 33,
+    "question": "Which clotting factors depend on vitamin K?",
+    "options": {
+      "A": "Factors I, V, VIII, and XII",
+      "B": "Factors II, VII, IX, and X",
+      "C": "Factors III, V, VIII, and XI",
+      "D": "Factors I, III, and V only"
+    },
+    "page": 9,
+    "source": "MCQ kru Mona.pdf",
+    "lesson": "Coagulation Disorders",
+    "correct_answer": "B",
+    "correct_text": "Factors II, VII, IX, and X"
+  },
+  {
+    "global_id": 244,
+    "lecture_id": 3,
+    "lecture_name": "Clinical Biology",
+    "question_id": 34,
+    "question": "What causes von Willebrand disease (vWD)?",
+    "options": {
+      "A": "Deficiency or dysfunction of von Willebrand factor",
+      "B": "Excessive red blood cell production",
+      "C": "Deficiency of Factor IX only",
+      "D": "Excessive albumin production"
+    },
+    "page": 9,
+    "source": "MCQ kru Mona.pdf",
+    "lesson": "Coagulation Disorders",
+    "correct_answer": "A",
+    "correct_text": "Deficiency or dysfunction of von Willebrand factor"
+  },
+  {
+    "global_id": 245,
+    "lecture_id": 3,
+    "lecture_name": "Clinical Biology",
+    "question_id": 35,
+    "question": "Which is a common symptom of von Willebrand disease?",
+    "options": {
+      "A": "Easy bruising and nosebleeds",
+      "B": "Increased bone density",
+      "C": "High blood glucose",
+      "D": "Reduced body temperature"
+    },
+    "page": 9,
+    "source": "MCQ kru Mona.pdf",
+    "lesson": "Coagulation Disorders",
+    "correct_answer": "A",
+    "correct_text": "Easy bruising and nosebleeds"
+  },
+  {
+    "global_id": 246,
+    "lecture_id": 3,
+    "lecture_name": "Clinical Biology",
+    "question_id": 36,
+    "question": "What is one important function of von Willebrand factor?",
+    "options": {
+      "A": "It breaks down fibrin",
+      "B": "It helps platelets adhere to the injured vessel wall",
+      "C": "It destroys clotting factors",
+      "D": "It converts plasmin into thrombin"
+    },
+    "page": 10,
+    "source": "MCQ kru Mona.pdf",
+    "lesson": "Coagulation Disorders",
+    "correct_answer": "B",
+    "correct_text": "It helps platelets adhere to the injured vessel wall"
+  },
+  {
+    "global_id": 247,
+    "lecture_id": 3,
+    "lecture_name": "Clinical Biology",
+    "question_id": 37,
+    "question": "What is disseminated intravascular coagulation (DIC)?",
+    "options": {
+      "A": "A condition involving only low red blood cell production",
+      "B": "A disorder involving widespread activation of blood clotting",
+      "C": "An inherited deficiency of Factor VIII only",
+      "D": "A condition involving excessive platelet production only"
+    },
+    "page": 10,
+    "source": "MCQ kru Mona.pdf",
+    "lesson": "Coagulation Disorders",
+    "correct_answer": "B",
+    "correct_text": "A disorder involving widespread activation of blood clotting"
+  },
+  {
+    "global_id": 248,
+    "lecture_id": 3,
+    "lecture_name": "Clinical Biology",
+    "question_id": 38,
+    "question": "Why can DIC cause both thrombosis and bleeding?",
+    "options": {
+      "A": "It increases only red blood cell production",
+      "B": "It consumes platelets and clotting factors while causing widespread clot formation",
+      "C": "It prevents all clot formation from the beginning",
+      "D": "It increases vitamin K production"
+    },
+    "page": 10,
+    "source": "MCQ kru Mona.pdf",
+    "lesson": "Coagulation Disorders",
+    "correct_answer": "B",
+    "correct_text": "It consumes platelets and clotting factors while causing widespread clot formation"
+  },
+  {
+    "global_id": 249,
+    "lecture_id": 3,
+    "lecture_name": "Clinical Biology",
+    "question_id": 39,
+    "question": "Which laboratory findings are typical of DIC?",
+    "options": {
+      "A": "Increased platelet count and shortened PT/aPTT",
+      "B": "Decreased platelet count, prolonged PT/aPTT, and increased D-dimer",
+      "C": "Normal platelet count and decreased D-dimer in every case",
+      "D": "Increased clotting factors and decreased fibrin breakdown"
+    },
+    "page": 10,
+    "source": "MCQ kru Mona.pdf",
+    "lesson": "Coagulation Disorders",
+    "correct_answer": "B",
+    "correct_text": "Decreased platelet count, prolonged PT/aPTT, and increased D-dimer"
+  },
+  {
+    "global_id": 250,
+    "lecture_id": 3,
+    "lecture_name": "Clinical Biology",
+    "question_id": 40,
+    "question": "What is the most important treatment priority in DIC?",
+    "options": {
+      "A": "Treat the underlying cause",
+      "B": "Give Factor VIII to every patient",
+      "C": "Prevent all clot breakdown",
+      "D": "Increase platelet destruction"
+    },
+    "page": 11,
+    "source": "MCQ kru Mona.pdf",
+    "lesson": "Coagulation Disorders",
+    "correct_answer": "A",
+    "correct_text": "Treat the underlying cause"
   }
 ]

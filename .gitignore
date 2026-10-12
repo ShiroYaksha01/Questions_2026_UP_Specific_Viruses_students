@@ -7,4 +7,7 @@ all_exact_highlights.json
 exact_highlights.json
 questions_raw.json
 __pycache__/
+.pdf_tools/
+.qa_tools/
+clinical_page*.png
 .vercel

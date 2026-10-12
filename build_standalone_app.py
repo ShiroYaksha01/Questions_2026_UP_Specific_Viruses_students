@@ -8,7 +8,7 @@ Builds a completely self-contained, standalone, mobile-first index.html file con
 - Filterable Question Navigator bottom sheet
 - Local autosave and restore of study progress
 - Full dual randomization (Questions + Options)
-- Embedded metabolic biochemistry MCQs with PDF-highlighted answers
+- Embedded biochemistry and clinical MCQs with PDF-highlighted answers
 - Windows double-click ready (runs natively in Edge, Chrome, Firefox with zero tools)
 - Vercel ready (static site deployment out-of-the-box)
 """
@@ -36,8 +36,8 @@ def main():
   <meta name="theme-color" content="#2563eb">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  <meta name="description" content="Metabolic Biochemistry Year 2 MCQ review. Practice {total_questions} PDF questions with randomized choices and highlighted answers.">
-  <title>Metabolic Biochemistry QCM Review 2026 — University of Puthisastra</title>
+  <meta name="description" content="Metabolic Biochemistry, Clinical Biochemistry and Clinical Biology MCQ review. Practice {total_questions} PDF questions with randomized choices and source answer keys.">
+  <title>Biochemistry &amp; Clinical Biology QCM Review 2026 — University of Puthisastra</title>
   
   <style>
     :root {{
@@ -936,7 +936,7 @@ def main():
       <a href="#" class="brand">
         <div class="brand-icon">🔬</div>
         <div class="brand-title">
-          <h1>Metabolic Biochemistry QCM</h1>
+          <h1>Biochemistry &amp; Clinical Biology QCM</h1>
           <p>Year 2 Assessment &bull; {total_questions} Questions</p>
         </div>
       </a>
@@ -954,6 +954,8 @@ def main():
   <!-- Main Content Container -->
   <main>
     <div class="study-notice hidden" id="studyNotice" role="status"></div>
+    <nav class="subject-sections" id="subjectSections" aria-label="Subject sections"></nav>
+    <h2 class="subject-heading" id="subjectHeading">Metabolic Biochemistry</h2>
 
     <!-- Study settings -->
     <dialog class="study-sheet settings-dialog" id="settingsDialog" aria-labelledby="settingsTitle" closedby="any">
@@ -964,7 +966,7 @@ def main():
       <button type="button" class="controls-toggle-btn hidden" id="btnToggleControls">
         <span class="controls-toggle-left">
           <span>⚙️</span>
-          <span id="controlsSummaryText">Metabolic Biochemistry • {total_questions} Qs</span>
+          <span id="controlsSummaryText">All subjects • {total_questions} Qs</span>
         </span>
         <span class="controls-toggle-right">
           <span class="pill pill-blue" id="progressPillMobile" style="font-size:0.75rem; padding:0.2rem 0.55rem;">0/{total_questions}</span>
@@ -977,7 +979,7 @@ def main():
           
           <!-- Filter Topic -->
           <div class="filter-item">
-            <span class="filter-label">Topic:</span>
+            <span class="filter-label">Subject:</span>
             <select id="lectureFilter" class="select-box">
               <!-- Populated via JS -->
             </select>
@@ -1054,10 +1056,10 @@ def main():
           <!-- Dynamic options buttons -->
         </div>
 
-        <!-- Highlighted answer box -->
+        <!-- Source answer box -->
         <div class="expl-box hidden" id="explBox">
           <div class="expl-header">
-            <span>✓ Highlighted Correct Answer:</span>
+            <span>✓ Correct answer:</span>
             <span id="explAnswerLabel" style="color:var(--text-main);"></span>
           </div>
         </div>
@@ -1094,7 +1096,7 @@ def main():
 
   <nav class="mobile-nav" aria-label="Question navigation">
     <button type="button" id="btnPrevMobile" class="mobile-nav-prev">← Prev</button>
-    <button type="button" id="btnNavigatorMobile" class="mobile-nav-center" aria-label="Open question navigator">Q <span id="mobilePosition">1/160</span> ▦</button>
+    <button type="button" id="btnNavigatorMobile" class="mobile-nav-center" aria-label="Open question navigator">Q <span id="mobilePosition">1/{total_questions}</span> ▦</button>
     <button type="button" id="btnNextMobile" class="mobile-nav-next">Next →</button>
   </nav>
 
@@ -1102,7 +1104,7 @@ def main():
     <div class="sheet-card">
       <div class="sheet-handle" aria-hidden="true"></div>
       <div class="sheet-heading"><h2 id="navigatorTitle">Question navigator</h2><button type="button" class="sheet-close" data-close-sheet aria-label="Close navigator">×</button></div>
-      <p class="sheet-subtitle" id="navigatorCount">0 / 160 answered</p>
+      <p class="sheet-subtitle" id="navigatorCount">0 / {total_questions} answered</p>
       <div class="navigator-filters" id="navigatorFilters" role="group" aria-label="Filter questions">
         <button type="button" data-filter="all" aria-pressed="true">All</button>
         <button type="button" data-filter="correct" aria-pressed="false">Correct</button>

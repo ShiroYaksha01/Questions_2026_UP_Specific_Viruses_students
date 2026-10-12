@@ -4,7 +4,10 @@
   const rawDB = window.RAW_QUESTIONS || [];
   if (!rawDB.length) return;
   const byId = new Map(rawDB.map(q => [q.global_id, q]));
-  const SESSION_KEY = "metabolic_biochem_session_v1";
+  const SUBJECT_IDS = [...new Set(rawDB.map(q => String(q.lecture_id)))];
+  const ACTIVE_SUBJECT_KEY = "mcq_active_subject";
+  const sessionKey = subject => `metabolic_biochem_session_v1_subject_${subject}`;
+  let SESSION_KEY = sessionKey(SUBJECT_IDS[0]);
   const STAR_KEY = "metabolic_biochem_stars";
   const THEME_KEY = "metabolic_theme_mode";
   const el = Object.fromEntries([
@@ -18,13 +21,13 @@
     "btnNext", "btnPrevMobile", "btnNextMobile", "btnNavigatorMobile",
     "mobilePosition", "paletteGrid", "sheetPaletteGrid", "navigatorFilters",
     "navigatorCount", "navigatorEmpty", "palAnsweredCounter", "palDrawerCounter",
-    "touchArea", "confirmModal", "modalIcon", "modalTitle", "modalDesc",
+    "touchArea", "subjectSections", "subjectHeading", "confirmModal", "modalIcon", "modalTitle", "modalDesc",
     "btnModalCancel", "btnModalConfirm", "controlsSummaryText"
   ].map(id => [id, document.getElementById(id)]));
 
   const state = {
     sessionQuestions: [], viewQuestions: [], currentId: null, answers: {},
-    starred: new Set(), lecture: "all", count: "all", shuffleQ: true,
+    starred: new Set(), lecture: SUBJECT_IDS[0], count: "all", shuffleQ: true,
     shuffleA: true, starOnly: false, navFilter: "all", stale: false,
     canSave: true, lastSwipeAt: 0
   };
@@ -81,6 +84,7 @@
   function save() {
     if (state.stale || !state.sessionQuestions.length) return;
     writeStorage(SESSION_KEY, JSON.stringify(snapshot()));
+    writeStorage(ACTIVE_SUBJECT_KEY, state.lecture);
   }
   function restore() {
     const text = readStorage(SESSION_KEY);
@@ -92,12 +96,12 @@
           new Set(saved.questionIds).size !== saved.questionIds.length ||
           !saved.optionOrder || !saved.answers ||
           !["all", "10", "20", "50", "100"].includes(saved.count) ||
-          !["all", ...new Set(rawDB.map(q => String(q.lecture_id)))].includes(saved.lecture) ||
+          saved.lecture !== state.lecture ||
           typeof saved.shuffleQ !== "boolean" || typeof saved.shuffleA !== "boolean" ||
           typeof saved.starOnly !== "boolean") throw new Error("invalid session");
       const questions = saved.questionIds.map(id => {
         const raw = byId.get(id), letters = saved.optionOrder[id];
-        if (!raw || !Array.isArray(letters) ||
+        if (!raw || String(raw.lecture_id) !== state.lecture || !Array.isArray(letters) ||
             letters.length !== optionLetters(raw).length ||
             new Set(letters).size !== letters.length ||
             letters.some(letter => !optionLetters(raw).includes(letter))) throw new Error("invalid question");
@@ -124,7 +128,7 @@
     }
   }
   function newSession() {
-    let list = rawDB.filter(q => state.lecture === "all" || String(q.lecture_id) === state.lecture);
+    let list = rawDB.filter(q => String(q.lecture_id) === state.lecture);
     if (state.shuffleQ) list = randomize(list);
     if (state.count !== "all") list = list.slice(0, Number(state.count));
     state.sessionQuestions = list.map(raw => makeQuestion(raw,
@@ -142,6 +146,11 @@
     el.checkStarOnly.checked = state.starOnly;
     el.btnStarOnly.setAttribute("aria-pressed", String(state.starOnly));
     el.btnStarOnly.textContent = state.starOnly ? "★" : "☆";
+    const subject = rawDB.find(q => String(q.lecture_id) === state.lecture);
+    el.subjectHeading.textContent = subject.lecture_name;
+    el.countFilter.options[0].textContent = `All ${rawDB.filter(q => String(q.lecture_id) === state.lecture).length} Questions`;
+    el.subjectSections.querySelectorAll("button").forEach(button =>
+      button.setAttribute("aria-pressed", String(button.dataset.subject === state.lecture)));
   }
   function setView(persist = true) {
     state.viewQuestions = state.starOnly
@@ -268,7 +277,8 @@
     el.headerProgress.setAttribute("aria-valuemax", String(total));
     el.headerProgress.setAttribute("aria-valuenow", String(count));
     el.progressFill.style.width = `${total ? count / total * 100 : 0}%`;
-    el.controlsSummaryText.textContent = `Metabolic Biochemistry • ${total} Qs`;
+    const subject = rawDB.find(q => String(q.lecture_id) === state.lecture).lecture_name;
+    el.controlsSummaryText.textContent = `${subject} • ${total} Qs`;
   }
   function renderAll() { renderQuestion(); renderPalette(); renderStats(); }
   function scrollQuestionIntoView() {
@@ -334,6 +344,7 @@
   }
   function requestSetting(key, value, control) {
     if (state.stale || value === state[key]) return;
+    if (key === "lecture") { switchSubject(value); return; }
     control.type === "checkbox" ? control.checked = state[key] : control.value = state[key];
     const apply = () => {
       state[key] = value;
@@ -347,13 +358,34 @@
     });
     else apply();
   }
+  function switchSubject(subject) {
+    if (state.stale || subject === state.lecture || !SUBJECT_IDS.includes(subject)) return;
+    save();
+    state.lecture = subject;
+    SESSION_KEY = sessionKey(subject);
+    state.navFilter = "all";
+    el.navigatorFilters.querySelectorAll("button").forEach(button =>
+      button.setAttribute("aria-pressed", String(button.dataset.filter === "all")));
+    el.studyNotice.classList.add("hidden");
+    if (restore()) setView();
+    else newSession();
+    closeSheet(el.settingsDialog);
+  }
   function populateLectures() {
     const counts = new Map();
     rawDB.forEach(q => counts.set(q.lecture_id, (counts.get(q.lecture_id) || 0) + 1));
-    el.lectureFilter.replaceChildren(new Option(`All ${rawDB.length} Questions`, "all"));
+    el.lectureFilter.replaceChildren();
+    el.subjectSections.replaceChildren();
     counts.forEach((count, id) => {
       const q = rawDB.find(item => item.lecture_id === id);
       el.lectureFilter.add(new Option(`${q.lecture_name} (${count} Qs)`, String(id)));
+      const button = document.createElement("button");
+      button.type = "button";
+      button.dataset.subject = String(id);
+      button.textContent = `${q.lecture_name} · ${count} questions`;
+      button.setAttribute("aria-pressed", "false");
+      button.addEventListener("click", () => switchSubject(String(id)));
+      el.subjectSections.append(button);
     });
   }
   function initTheme() {
@@ -459,6 +491,9 @@
 
   populateLectures();
   initTheme();
+  const activeSubject = readStorage(ACTIVE_SUBJECT_KEY);
+  if (SUBJECT_IDS.includes(activeSubject)) state.lecture = activeSubject;
+  SESSION_KEY = sessionKey(state.lecture);
   try {
     const stars = JSON.parse(readStorage(STAR_KEY) || "[]");
     if (Array.isArray(stars)) state.starred = new Set(stars.filter(id => byId.has(id)));
