@@ -14,6 +14,10 @@ The site saves answers, question and choice order, position, and settings for ea
 
 The site is also a static page that can be hosted with the included `vercel.json` configuration.
 
+## Export to Google Forms
+
+`google_forms_mcq.gs` contains all 250 questions and creates three separate, automatically graded draft quizzes. Paste it into a new Google Apps Script project and run `createMcqForms`. See [GOOGLE_FORMS_SETUP.md](GOOGLE_FORMS_SETUP.md) for setup, batch progress, quiz feedback, and publishing instructions. Regenerate the export with `python build_google_forms.py`; verify it with `node test_google_forms.cjs`.
+
 ## Rebuild from the PDF
 
 Rebuilding requires Python 3, the `pypdf` and `pymupdf` packages, and Poppler's `pdftotext` utility on your PATH. Install the Python packages with `python -m pip install pypdf pymupdf`; install Poppler using your operating system's package manager.
